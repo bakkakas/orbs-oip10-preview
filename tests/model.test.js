@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels} from '../site/model.js';
+test('exact user-supplied constants',()=>{assert.equal(TARGET,507540603);assert.equal(WEEKLY_USD,67307.69);});
+test('weekly USD divided by price, not multiplied',()=>{assert.equal(calculateBurn(.02),3365384.5);assert.equal(calculateBurn(.01),6730769);assert.equal(calculateBurn(.05),1346153.8);});
+test('invalid prices never yield Infinity or an authoritative zero',()=>{for(const v of [0,-1,NaN,Infinity,'0.02',null,undefined,.0000001,1001])assert.equal(calculateBurn(v),null);});
+test('supported boundaries and over-target values are not silently capped',()=>{assert.ok(Math.abs(calculateBurn(.000001)-67307690000) <= Number.EPSILON*67307690000*2);assert.ok(Math.abs(calculateBurn(1000)-67.30769) <= Number.EPSILON*67.30769*2);});
+test('only complete examples contribute; raw values used',()=>{assert.equal(records.length,7);assert.equal(cumulative,records.slice(0,6).reduce((s,r)=>s+WEEKLY_USD/r.twap,0));assert.equal(progressPercent,cumulative/507540603*100);assert.equal(records[6].amount,null);});
+test('filter combinations include genuine empty state',()=>{assert.equal(filterRecords('complete').length,6);assert.equal(filterRecords('pending').length,1);assert.equal(filterRecords('pending','early').length,0);assert.deepEqual(filterRecords('all','recent','asc').map(r=>r.week),[5,6,7]);assert.equal(filterRecords()[0].week,7);});
+test('filters never mutate original records',()=>{filterRecords('all','all','desc');assert.equal(records[0].week,1);});
+test('stored channel data is constrained and deduplicated',()=>{assert.deepEqual(sanitizeChannels(['email','bad','email','push']),['email','push']);assert.deepEqual(sanitizeChannels({}),['telegram']);assert.deepEqual(sanitizeChannels([]),[]);});
