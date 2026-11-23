@@ -21,3 +21,4 @@ jobs:
           python3 -m http.server 8898 --bind 127.0.0.1 --directory dist &
           node tests/languages.cjs http://127.0.0.1:8898/
           node tests/updates.cjs http://127.0.0.1:8898/
+          node tests/quote-languages.cjs http://127.0.0.1:8898/

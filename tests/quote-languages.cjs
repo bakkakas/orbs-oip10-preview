@@ -1,0 +1,12 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const assert=require('node:assert/strict');
+const base=process.argv[2]||'http://127.0.0.1:8237/';
+(async()=>{const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{})});let calls=0,mode='good',value=.00759,checks=0;const check=(v,m)=>{assert.ok(v,m);checks++;};
+try{const c=await browser.newContext();await c.route('https://api.coingecko.com/api/v3/simple/price?**',route=>{calls++;return mode==='error'?route.fulfill({status:429,body:'rate limit'}):route.fulfill({contentType:'application/json',body:JSON.stringify({orbs:{usd:value,usd_24h_change:2.47,last_updated_at:Math.floor(Date.now()/1000)}})});});
+const p=await c.newPage();await p.clock.install({time:new Date()});await p.goto(base,{waitUntil:'networkidle'});
+for(const lang of ['en','ja','ko']){await p.locator('#language').selectOption(lang);await p.waitForURL(url=>url.searchParams.get('lang')===lang);await p.waitForLoadState('networkidle');check(await p.locator('#market-price').innerText()==='$0.0076',lang+' shares quote');check(calls===1,lang+' does not repeat API call');}
+value=.0088;await p.clock.fastForward(61000);await p.waitForFunction(()=>document.querySelector('#market-price').textContent==='$0.0088');check(calls===2,'one refresh at 60s');
+await p.locator('#language').selectOption('en');await p.waitForURL(url=>url.searchParams.get('lang')==='en');await p.waitForLoadState('networkidle');check(await p.locator('#market-price').innerText()==='$0.0088'&&calls===2,'new quote shared with next language');
+mode='error';await p.clock.fastForward(61000);await p.waitForFunction(()=>document.querySelector('#market').dataset.state==='unavailable');check(await p.locator('#market-price').innerText()==='—','failure clears old quote');check(calls===3,'one failed request');
+await p.locator('#language').selectOption('ja');await p.waitForURL(url=>url.searchParams.get('lang')==='ja');await p.waitForLoadState('networkidle');check(await p.locator('#market-price').innerText()==='—'&&calls===3,'failure backoff survives language switch');
+mode='good';value=.0091;await p.clock.fastForward(61000);await p.waitForFunction(()=>document.querySelector('#market-price').textContent==='$0.0091');check(calls===4,'recovers on next interval');
+await c.close();console.log(JSON.stringify({checks,simulatedProvider:true,languageSwitchDedup:true,freshnessAndFailureRecovery:true}));}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});
