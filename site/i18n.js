@@ -32,6 +32,7 @@ export function initLanguage() {
     if (!allowed.includes(next)) return;
     try { localStorage.setItem('orbs-preview-language', next); } catch { /* Query still persists the choice for this URL. */ }
     const url = new URL(location.href);
+    url.searchParams.set('v', document.querySelector('meta[name=release]')?.content || 'dev');
     url.searchParams.set('lang', next);
     location.assign(url.href);
   });

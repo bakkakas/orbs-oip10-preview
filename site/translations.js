@@ -123,8 +123,8 @@ export const translations = {
     "ja": "（合計）"
   },
   "예시 누적 소각 진행률": {
-    "en": "Illustrative cumulative burn progress",
-    "ja": "サンプルの累計バーン進捗"
+    "en": "Cumulative burn progress",
+    "ja": "累計バーン進捗"
   },
   "진행률 설명": {
     "en": "Progress description",
@@ -254,8 +254,9 @@ export const translations = {
     "ja": "このブラウザに選択を保存"
   },
   "알림 예시 보기": {
-    "en": "Preview notification",
-    "ja": "通知サンプルを見る"
+    "ko": "알림 미리보기",
+    "en": "Preview alert",
+    "ja": "通知をプレビュー"
   },
   "저장된 선택 지우기": {
     "en": "Clear saved choices",
@@ -347,12 +348,14 @@ export const translations = {
     "ja": "すべての週"
   },
   "최근 3주 예시": {
-    "en": "Latest 3 sample weeks",
-    "ja": "直近3週のサンプル"
+    "ko": "최근 회차",
+    "en": "Recent rounds",
+    "ja": "直近の回"
   },
   "이전 주차 예시": {
-    "en": "Earlier sample weeks",
-    "ja": "それ以前のサンプル"
+    "ko": "이전 회차",
+    "en": "Earlier rounds",
+    "ja": "過去の回"
   },
   "정렬": {
     "en": "Sort",
@@ -461,8 +464,9 @@ export const translations = {
     "ko": "계산기와 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님."
   },
   "예시 {0}%, {1} ORBS": {
-    "en": "Sample {0}%, {1} ORBS",
-    "ja": "サンプル {0}%、{1} ORBS"
+    "ko": "{0}%, {1} ORBS",
+    "en": "{0}%, {1} ORBS",
+    "ja": "{0}%, {1} ORBS"
   },
   "임시 ORBS 스테이킹 주소를 복사했어. 실제 소각 주소가 아니야.": {
     "en": "Temporary ORBS staking address copied. This is not the burn address.",
@@ -499,8 +503,9 @@ export const translations = {
     "ja": "スライダー価格 {0} USD / ORBS"
   },
   "예시 {0}주차 · 계산 근거": {
-    "en": "Sample week {0} · calculation",
-    "ja": "サンプル第{0}週・計算の根拠"
+    "ko": "{0}회차 · 계산 근거",
+    "en": "Round {0} · Calculation",
+    "ja": "第{0}回 · 計算根拠"
   },
   "가상 주차이며 실제 날짜 또는 거래를 의미하지 않아.": {
     "en": "This is an illustrative week, not an actual date or transaction.",
@@ -508,12 +513,14 @@ export const translations = {
     "ko": "가상 주차이며 실제 날짜 또는 거래를 의미하지 않음."
   },
   "완료 예시 · 온체인 검증 아님": {
-    "en": "Completed sample · not on-chain verified",
-    "ja": "完了サンプル・オンチェーン検証済みではありません"
+    "ko": "완료 · 온체인 미연동",
+    "en": "Completed · not connected on-chain",
+    "ja": "完了 · オンチェーン未連携"
   },
   "대기 예시 · 누적량에서 제외": {
-    "en": "Pending sample · excluded from cumulative total",
-    "ja": "待機サンプル・累計から除外"
+    "ko": "대기 · 누적량에서 제외",
+    "en": "Pending · excluded from total",
+    "ja": "待機中 · 累計から除外"
   },
   "주간 기준 금액": {
     "en": "Weekly USD amount",
@@ -524,8 +531,9 @@ export const translations = {
     "ja": "価格観測区間"
   },
   "해당 예시 주차 직전 7일 · 실제 시작/종료 시각 미확정": {
-    "en": "The preceding 7 days of this sample week · actual start/end times pending",
-    "ja": "このサンプル週の直前7日間・実際の開始／終了時刻は未確定"
+    "ko": "해당 회차 직전 7일 · 시작/종료 시각 미확정",
+    "en": "7 days preceding the round · exact boundaries pending",
+    "ja": "該当回の直前7日間 · 開始・終了時刻は未確定"
   },
   "7일 TWAP": {
     "en": "7-day TWAP",
@@ -581,12 +589,14 @@ export const translations = {
     "ja": "詳細を見る ↗"
   },
   "예시 {0}주차 상세 보기": {
-    "en": "View sample week {0} details",
-    "ja": "サンプル第{0}週の詳細を見る"
+    "ko": "{0}회차 상세 보기",
+    "en": "View round {0} details",
+    "ja": "第{0}回の詳細を見る"
   },
   "예시 {0}건 / 전체 {1}건": {
-    "en": "{0} sample rows / {1} total",
-    "ja": "サンプル{0}件／全{1}件"
+    "ko": "{0}건 / 전체 {1}건",
+    "en": "{0} of {1} records",
+    "ja": "全{1}件中{0}件"
   },
   "이 브라우저에 저장된 체험용 선택을 불러왔어. 실제 구독은 아니야.": {
     "en": "Loaded demo choices from this browser. This is not a real subscription.",
@@ -629,28 +639,32 @@ export const translations = {
     "ko": "저장소 접근 불가로 삭제 여부를 확인하지 못했음."
   },
   "소각 알림 메시지 예시": {
-    "en": "Sample burn notification",
-    "ja": "バーン通知サンプル"
+    "ko": "Telegram 알림 미리보기",
+    "en": "Telegram alert preview",
+    "ja": "Telegram通知プレビュー"
   },
   "선택한 채널: {0}": {
     "en": "Selected channels: {0}",
     "ja": "選択チャネル：{0}"
   },
   "[체험용 예시 · 실제 발송 없음]": {
-    "en": "[Demo only · not sent]",
-    "ja": "［体験用サンプル・実際には送信されません］"
+    "ko": "[미리보기 · 실제 발송 없음]",
+    "en": "[Preview · no message sent]",
+    "ja": "[プレビュー · 実際の送信なし]"
   },
   "예시 6주차 소각 완료: {0} ORBS": {
-    "en": "Sample week 6 burn complete: {0} ORBS",
-    "ja": "サンプル第6週のバーン完了：{0} ORBS"
+    "ko": "6회차 소각 완료: {0} ORBS",
+    "en": "Round 6 burn complete: {0} ORBS",
+    "ja": "第6回バーン完了: {0} ORBS"
   },
   "적용 TWAP: ${0} / ORBS · 기준 금액: ${1}": {
     "en": "Applied TWAP: ${0} / ORBS · weekly amount: ${1}",
     "ja": "適用TWAP：${0} / ORBS・基準額：${1}"
   },
   "예시 누적: {0} / {1} ORBS ({2}%)": {
-    "en": "Sample cumulative: {0} / {1} ORBS ({2}%)",
-    "ja": "サンプル累計：{0} / {1} ORBS（{2}%）"
+    "ko": "누적: {0} / {1} ORBS ({2}%)",
+    "en": "Cumulative: {0} / {1} ORBS ({2}%)",
+    "ja": "累計: {0} / {1} ORBS ({2}%)"
   },
   "실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.": {
     "en": "The live service would include a confirmed transaction link, burn time and price window. No transaction exists here, so no link is fabricated.",
@@ -702,9 +716,9 @@ export const translations = {
     "ko": "목표와 계산 규칙은 제공된 기준값임."
   },
   "아래 누적량·주간 기록·가격은 UI 체험용 예시임.": {
-    "en": "Totals, weekly records and prices below are illustrative.",
-    "ja": "以下の累計・週次履歴・価格はUI体験用のサンプルです。",
-    "ko": "아래 누적량·주간 기록·가격은 UI 체험용 예시임."
+    "ko": "소각 지표·내역은 데모 데이터임. 상단 시세만 실시간 조회함.",
+    "en": "Burn metrics and history use demo data. Only the header quote is live.",
+    "ja": "バーン指標・履歴はデモデータです。上部の市場価格のみリアルタイムで取得します。"
   },
   "ORBS 스테이킹 컨트랙트를 임시로 표시했음. 실제 소각 컨트랙트가 아님.": {
     "en": "The ORBS staking contract is shown temporarily. This is NOT the burn contract.",
@@ -717,9 +731,9 @@ export const translations = {
     "ko": "임시 ORBS 스테이킹 컨트랙트 주소를 복사함. 실제 소각 주소가 아님."
   },
   "아래 내역 중 ‘완료 예시’만 합산함. 대기 예시와 시뮬레이션은 제외함.": {
-    "en": "Sums completed sample rows only. Pending rows and simulations are excluded.",
-    "ja": "完了サンプルのみを合算しています。待機中の行とシミュレーションは含みません。",
-    "ko": "아래 내역 중 ‘완료 예시’만 합산함. 대기 예시와 시뮬레이션은 제외함."
+    "ko": "완료된 회차의 소각 수량을 합산함.",
+    "en": "Total amount burned across completed rounds.",
+    "ja": "完了した回のバーン数量を合計。"
   },
   "주간 소각량 계산 제목": {
     "en": "Weekly burn calculator title",
@@ -797,14 +811,14 @@ export const translations = {
     "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
   },
   "조건에 맞는 예시 내역이 없음.": {
-    "en": "No sample records match these filters.",
-    "ja": "条件に一致するサンプルはありません。",
-    "ko": "조건에 맞는 예시 내역이 없음."
+    "ko": "조건에 맞는 내역이 없음.",
+    "en": "No matching records.",
+    "ja": "条件に一致する履歴はありません。"
   },
   "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산함. 실제 소각량은 확정 이벤트에서 조회하며, USD 환산액과 계산 규칙은 별도로 검증 예정임.": {
-    "en": "Each completed sample is $67,307.69 divided by its TWAP. Real burn amounts will come from confirmed events, with USD values and calculation rules verified separately.",
-    "ja": "各完了サンプルは67,307.69米ドル÷該当TWAPで計算しています。実際のバーン数量は確定イベントから取得し、米ドル換算額と計算ルールは別途検証します。",
-    "ko": "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산함. 실제 소각량은 확정 이벤트에서 조회하며, USD 환산액과 계산 규칙은 별도로 검증 예정임."
+    "ko": "소각 수량 = $67,307.69 ÷ 직전 7일 기준가격.",
+    "en": "Amount burned = $67,307.69 ÷ preceding 7-day reference price.",
+    "ja": "バーン数量 = $67,307.69 ÷ 直前7日間の基準価格。"
   },
   "커뮤니티 UI 검토용 프리뷰이며 공식 온체인 현황이 아님.": {
     "en": "This is a community UI preview, not an official on-chain status page.",
@@ -817,9 +831,9 @@ export const translations = {
     "ko": "제목과 설명을 직접 수정 가능함. 저장한 문구는 이 브라우저의 현재 언어에만 적용됨. 공통 사이트나 다른 기기에는 반영되지 않음."
   },
   "소각 수치·계산 규칙·주소 및 예시/임시 안내는 유지됨.": {
-    "en": "Burn figures, calculation rules, addresses and sample/temporary notices remain unchanged.",
-    "ja": "バーン数値・計算ルール・アドレス・サンプル／仮表示の案内は変更されません。",
-    "ko": "소각 수치·계산 규칙·주소 및 예시/임시 안내는 유지됨."
+    "ko": "소각 수치·계산 규칙·주소와 연동 상태 안내는 유지됨.",
+    "en": "Burn values, rules, addresses and integration status remain unchanged.",
+    "ja": "バーン数値・計算ルール・アドレス・連携状況の案内は変更されません。"
   },
   "계산기와 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님.": {
     "en": "Enable JavaScript to use the calculator and filters. This site uses sample data, not real on-chain information.",
@@ -1022,9 +1036,9 @@ export const translations = {
     "ja": "ORBS総供給量"
   },
   "최초 100억 개 − 누적 예시 소각량": {
-    "ko": "최초 100억 개 − 누적 예시 소각량",
-    "en": "Initial 10 billion − cumulative sample burns",
-    "ja": "初期100億枚 − 累積サンプルバーン量"
+    "ko": "최초 100억 개 − 누적 소각량",
+    "en": "Initial 10 billion − cumulative burns",
+    "ja": "初期100億枚 − 累計バーン数量"
   },
   "실제 온체인 총 공급량이 아닌 계산 예시임.": {
     "ko": "실제 온체인 총 공급량이 아닌 계산 예시임.",
@@ -1067,14 +1081,14 @@ export const translations = {
     "ja": "全52回を想定"
   },
   "완료된 예시 내역만 집계함.": {
-    "ko": "완료된 예시 내역만 집계함.",
-    "en": "Completed sample rounds only.",
-    "ja": "完了したサンプル回のみ集計。"
+    "ko": "완료된 회차만 집계함.",
+    "en": "Completed rounds only.",
+    "ja": "完了した回のみ集計。"
   },
   "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.": {
-    "ko": "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.",
-    "en": "Completed sample rounds only. Transaction links temporarily point to the ORBS staking address, not actual burn transactions.",
-    "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
+    "ko": "완료된 회차만 표시함. 날짜를 누르면 계산 근거 확인 가능함.",
+    "en": "Completed rounds only. Select a date to view the calculation.",
+    "ja": "完了した回のみ表示。日付を選択すると計算根拠を確認できます。"
   },
   "임시 스테이킹 주소 · 실제 거래 아님": {
     "ko": "임시 스테이킹 주소 · 실제 거래 아님",
@@ -1100,5 +1114,147 @@ export const translations = {
     "ko": "가격·소각 지표 및 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님.",
     "en": "Enable JavaScript for prices, burn metrics and filters. Burn data is illustrative, not live on-chain information.",
     "ja": "価格・バーン指標・フィルターにはJavaScriptが必要です。バーンデータはサンプルであり、実際のオンチェーン情報ではありません。"
+  },
+  "소각 지표·내역은 데모 데이터임. 상단 시세만 실시간 조회함.": {
+    "ko": "소각 지표·내역은 데모 데이터임. 상단 시세만 실시간 조회함.",
+    "en": "Burn metrics and history use demo data. Only the header quote is live.",
+    "ja": "バーン指標・履歴はデモデータです。上部の市場価格のみリアルタイムで取得します。"
+  },
+  "완료된 회차의 소각 수량을 합산함.": {
+    "ko": "완료된 회차의 소각 수량을 합산함.",
+    "en": "Total amount burned across completed rounds.",
+    "ja": "完了した回のバーン数量を合計。"
+  },
+  "최초 100억 개 − 누적 소각량": {
+    "ko": "최초 100억 개 − 누적 소각량",
+    "en": "Initial 10 billion − cumulative burns",
+    "ja": "初期100億枚 − 累計バーン数量"
+  },
+  "완료된 회차만 집계함.": {
+    "ko": "완료된 회차만 집계함.",
+    "en": "Completed rounds only.",
+    "ja": "完了した回のみ集計。"
+  },
+  "완료된 회차만 표시함. 날짜를 누르면 계산 근거 확인 가능함.": {
+    "ko": "완료된 회차만 표시함. 날짜를 누르면 계산 근거 확인 가능함.",
+    "en": "Completed rounds only. Select a date to view the calculation.",
+    "ja": "完了した回のみ表示。日付を選択すると計算根拠を確認できます。"
+  },
+  "최근 회차": {
+    "ko": "최근 회차",
+    "en": "Recent rounds",
+    "ja": "直近の回"
+  },
+  "이전 회차": {
+    "ko": "이전 회차",
+    "en": "Earlier rounds",
+    "ja": "過去の回"
+  },
+  "조건에 맞는 내역이 없음.": {
+    "ko": "조건에 맞는 내역이 없음.",
+    "en": "No matching records.",
+    "ja": "条件に一致する履歴はありません。"
+  },
+  "소각 수량 = $67,307.69 ÷ 직전 7일 기준가격.": {
+    "ko": "소각 수량 = $67,307.69 ÷ 직전 7일 기준가격.",
+    "en": "Amount burned = $67,307.69 ÷ preceding 7-day reference price.",
+    "ja": "バーン数量 = $67,307.69 ÷ 直前7日間の基準価格。"
+  },
+  "소각 수치·계산 규칙·주소와 연동 상태 안내는 유지됨.": {
+    "ko": "소각 수치·계산 규칙·주소와 연동 상태 안내는 유지됨.",
+    "en": "Burn values, rules, addresses and integration status remain unchanged.",
+    "ja": "バーン数値・計算ルール・アドレス・連携状況の案内は変更されません。"
+  },
+  "{0}%, {1} ORBS": {
+    "ko": "{0}%, {1} ORBS",
+    "en": "{0}%, {1} ORBS",
+    "ja": "{0}%, {1} ORBS"
+  },
+  "{0}회차 · 계산 근거": {
+    "ko": "{0}회차 · 계산 근거",
+    "en": "Round {0} · Calculation",
+    "ja": "第{0}回 · 計算根拠"
+  },
+  "{0}회차 상세 보기": {
+    "ko": "{0}회차 상세 보기",
+    "en": "View round {0} details",
+    "ja": "第{0}回の詳細を見る"
+  },
+  "{0}건 / 전체 {1}건": {
+    "ko": "{0}건 / 전체 {1}건",
+    "en": "{0} of {1} records",
+    "ja": "全{1}件中{0}件"
+  },
+  "완료 · 온체인 미연동": {
+    "ko": "완료 · 온체인 미연동",
+    "en": "Completed · not connected on-chain",
+    "ja": "完了 · オンチェーン未連携"
+  },
+  "대기 · 누적량에서 제외": {
+    "ko": "대기 · 누적량에서 제외",
+    "en": "Pending · excluded from total",
+    "ja": "待機中 · 累計から除外"
+  },
+  "해당 회차 직전 7일 · 시작/종료 시각 미확정": {
+    "ko": "해당 회차 직전 7일 · 시작/종료 시각 미확정",
+    "en": "7 days preceding the round · exact boundaries pending",
+    "ja": "該当回の直前7日間 · 開始・終了時刻は未確定"
+  },
+  "Telegram 알림 미리보기": {
+    "ko": "Telegram 알림 미리보기",
+    "en": "Telegram alert preview",
+    "ja": "Telegram通知プレビュー"
+  },
+  "알림 미리보기": {
+    "ko": "알림 미리보기",
+    "en": "Preview alert",
+    "ja": "通知をプレビュー"
+  },
+  "[미리보기 · 실제 발송 없음]": {
+    "ko": "[미리보기 · 실제 발송 없음]",
+    "en": "[Preview · no message sent]",
+    "ja": "[プレビュー · 実際の送信なし]"
+  },
+  "6회차 소각 완료: {0} ORBS": {
+    "ko": "6회차 소각 완료: {0} ORBS",
+    "en": "Round 6 burn complete: {0} ORBS",
+    "ja": "第6回バーン完了: {0} ORBS"
+  },
+  "누적: {0} / {1} ORBS ({2}%)": {
+    "ko": "누적: {0} / {1} ORBS ({2}%)",
+    "en": "Cumulative: {0} / {1} ORBS ({2}%)",
+    "ja": "累計: {0} / {1} ORBS ({2}%)"
+  },
+  "프리뷰 · 온체인 미연동. 소각 지표·주간 내역은 데모 데이터이며, 주소 링크는 임시 ORBS 스테이킹 주소임. 현재 ORBS 시세만 실시간 조회함.": {
+    "en": "Preview · no on-chain connection. Burn metrics and history are demo data; address links point to the temporary ORBS staking address. Only the current ORBS quote is live.",
+    "ja": "プレビュー · オンチェーン未連携。バーン指標・週次履歴はデモデータで、リンク先は仮のORBSステーキングアドレスです。現在のORBS市場価格のみリアルタイムで取得します。"
+  },
+  "Telegram으로 소각 알림 받기": {
+    "en": "Get burn alerts on Telegram",
+    "ja": "Telegramでバーン通知を受け取る"
+  },
+  "봇 연결 준비 중 · 현재 구독 등록 및 알림 발송은 없음.": {
+    "en": "Bot connection pending · subscriptions and delivery are not active.",
+    "ja": "ボット連携準備中 · 現在は購読登録・通知送信を行っていません。"
+  },
+  "알림 수신 방법": {
+    "en": "How to receive alerts",
+    "ja": "通知を受け取る方法"
+  },
+  "운영자가 전용 Telegram 봇과 소각 감시 서버를 연결한 뒤 봇 링크를 공개함.": {
+    "en": "The operator connects a dedicated Telegram bot to a burn-monitoring server, then publishes the bot link.",
+    "ja": "運営者が専用Telegramボットとバーン監視サーバーを接続し、ボットのリンクを公開します。"
+  },
+  "봇 링크를 열고 시작(/start)을 누르면 알림 수신 등록됨. 중단은 /stop으로 처리함.": {
+    "en": "Open the bot link and press Start (/start) to subscribe. Use /stop to unsubscribe.",
+    "ja": "ボットのリンクを開き、開始（/start）で購読登録。/stopで解除します。"
+  },
+  "확정된 새 소각 거래가 확인되면 수량·기준가격·누적 진행률·거래 링크를 DM으로 받음.": {
+    "en": "After a new burn is confirmed, receive its amount, reference price, cumulative progress and transaction link by DM.",
+    "ja": "新たなバーンの確定後、数量・基準価格・累計進捗・取引リンクがDMで届きます。"
+  },
+  "확정 소각 컨트랙트·체인·ABI와 전용 봇 연결이 필요함. 이 페이지에서 버튼을 누르는 것만으로 구독되지 않음.": {
+    "en": "The confirmed burn contract, chain, ABI and a dedicated bot connection are required. Clicking a button on this page does not subscribe you.",
+    "ja": "確定したバーンコントラクト・チェーン・ABIと専用ボットの接続が必要です。このページのボタンを押すだけでは購読登録されません。"
   }
 };
