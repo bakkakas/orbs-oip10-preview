@@ -26,7 +26,9 @@ for(const width of [1440,390,320]){
  await page.getByRole('button',{name:'저장하고 적용',exact:true}).click();await page.reload({waitUntil:'networkidle'});
  check(await title.innerText()==='<img src=x onerror=alert(1)> 시즌 1','edited text survives reload literally');
  check(await title.locator('img').count()===0,'copy is plain text, never interpreted HTML');
- check(await page.locator('#percent').innerText()!=='' ,'editing retains calculation');
+ check(await page.locator('#percent').innerText()==='32.00%' ,'editing retains 32% sample progress');
+ check(await page.locator('#burned').innerText()==='162,412,992.96','sample amount matches 32%');
+ check(await page.locator('#progress-fill').evaluate(el=>el.style.width)==='32%','filled bar matches 32%');
  await page.locator('#edit-copy').click();const downloaded=page.waitForEvent('download');await page.locator('#export-copy').click();const file=await downloaded;check(file.suggestedFilename()==='orbs-preview-copy.json','copy export download');
  const exported=JSON.parse(fs.readFileSync(await file.path(),'utf8'));check(exported.copy['hero-title'].includes('시즌 1'),'export contains edited copy');
  await page.locator('#reset-copy').click();await page.getByRole('button',{name:'저장하고 적용',exact:true}).click();await page.reload({waitUntil:'networkidle'});check(await title.innerText()===originalTitle,'reset restores default persistently');
@@ -47,7 +49,7 @@ for(const width of [1440,390,320]){
  await page.locator('#week-filter').selectOption('recent');check(await page.locator('#history-body tr').count()===2,'recent complete filter');
  await page.locator('#sort-filter').selectOption('asc');check((await page.locator('#history-body tr').first().innerText()).includes('05주차'),'sort');
  await page.getByRole('button',{name:'예시 5주차 상세 보기',exact:true}).click();check(await page.locator('#detail-dialog').isVisible(),'details open');
- check((await page.locator('#dialog-body').innerText()).includes('$0.022000'),'row-specific TWAP');
+ check((await page.locator('#dialog-body').innerText()).includes('$0.002658'),'row-specific TWAP');
  check((await page.locator('#dialog-body').innerText()).includes('실제 거래 정보 없음'),'no fake transaction');
  await page.keyboard.press('Escape');check(!await page.locator('#detail-dialog').isVisible(),'escape closes dialog');
  await page.locator('input[value=email]').check();await page.locator('input[value=telegram]').uncheck();await page.getByRole('button',{name:'이 브라우저에 선택 저장',exact:true}).click();check((await page.locator('#prefs-status').innerText()).includes('실제 알림 구독·발송은 없어'),'save disclosure');

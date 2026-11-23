@@ -1,4 +1,4 @@
-import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels} from './model.js?v=1';
+import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels} from './model.js?v=3';
 const $ = id => document.getElementById(id);
 const fmt = (v,d=2) => v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
 $('burned').textContent=fmt(cumulative);
