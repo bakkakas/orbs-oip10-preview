@@ -14,9 +14,26 @@ for(const width of [1440,390,320]){
  await page.locator('#burned').filter({hasText:/[0-9]/}).waitFor();
  check(await page.locator('#sim-amount').innerText()==='3,365,384.50','initial formula');
  check(await page.locator('#history-body tr').count()===7,'all seven illustrative rows');
- check(await page.locator('#explorer').isDisabled(),'explorer genuinely disabled');
+ check(await page.locator('#explorer').getAttribute('href')==='https://etherscan.io/address/0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3','temporary staking explorer link');
+
+ check((await page.locator('.temporary-contract').innerText()).includes('실제 소각 컨트랙트가 아니야'),'temporary contract disclosure');
+ const title=page.locator('[data-copy=hero-title]');const originalTitle=await title.innerText();
+ await page.locator('#edit-copy').click();
+ check((await page.locator('#copy-scope').innerText()).includes('이 브라우저에만'),'local-only scope');
+ const titleField=page.locator('#copy-field-hero-title');
+ await titleField.fill('편집 취소');await page.locator('#cancel-copy').click();check(await title.innerText()===originalTitle,'cancel leaves live copy unchanged');
+ await page.locator('#edit-copy').click();await titleField.fill('<img src=x onerror=alert(1)> 시즌 1');
+ await page.getByRole('button',{name:'저장하고 적용',exact:true}).click();await page.reload({waitUntil:'networkidle'});
+ check(await title.innerText()==='<img src=x onerror=alert(1)> 시즌 1','edited text survives reload literally');
+ check(await title.locator('img').count()===0,'copy is plain text, never interpreted HTML');
+ check(await page.locator('#percent').innerText()!=='' ,'editing retains calculation');
+ await page.locator('#edit-copy').click();const downloaded=page.waitForEvent('download');await page.locator('#export-copy').click();const file=await downloaded;check(file.suggestedFilename()==='orbs-preview-copy.json','copy export download');
+ const exported=JSON.parse(fs.readFileSync(await file.path(),'utf8'));check(exported.copy['hero-title'].includes('시즌 1'),'export contains edited copy');
+ await page.locator('#reset-copy').click();await page.getByRole('button',{name:'저장하고 적용',exact:true}).click();await page.reload({waitUntil:'networkidle'});check(await title.innerText()===originalTitle,'reset restores default persistently');
+ check(await page.locator('#progress-fill').evaluate(el=>getComputedStyle(el,'::after').animationName)==='burn-shimmer','shimmer on filled bar');
+ await page.emulateMedia({reducedMotion:'reduce'});check(await page.locator('#progress-fill').evaluate(el=>getComputedStyle(el,'::after').animationName)==='none','reduced motion disables shimmer');await page.emulateMedia({reducedMotion:'no-preference'});
  const initialProgress=await page.locator('#percent').innerText();
- await page.locator('#copy-contract').click();check((await page.locator('#contract-message').innerText()).includes('복사하지 않았어'),'copy placeholder only');
+ await context.grantPermissions(['clipboard-read','clipboard-write']);await page.locator('#copy-contract').click();check(await page.evaluate(()=>navigator.clipboard.readText())==='0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3','copy exact temporary staking address');
  await page.locator('[data-price="0.01"]').click();check(await page.locator('#sim-amount').innerText()==='6,730,769.00','preset formula');
  check(await page.locator('#percent').innerText()===initialProgress,'simulator does not mutate cumulative');
  for(const val of ['', '0','-0.02','1001']){await page.locator('#twap').fill(val);check(await page.locator('#sim-amount').innerText()==='—','invalid price clears result '+val);}
@@ -42,7 +59,7 @@ for(const width of [1440,390,320]){
  check((await page.locator('#sources a').first().getAttribute('href'))==='https://blog.naver.com/orbskorea/224463916574','exact explainer link');
  check((await page.locator('#sources a').last().getAttribute('href')).endsWith('0xd2af1ee80124e22afb73b4f8871f27abdb8c4008335900b2af1387db3abfed0d'),'exact Snapshot link');
  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal page overflow '+width);
- check(await page.locator('a[href*="etherscan"]').count()===0,'no invented explorer URL');
+ check(await page.locator('a[href*="etherscan"]').count()===1,'only requested temporary explorer link');
  await page.reload({waitUntil:'networkidle'});await page.evaluate(()=>window.scrollTo(0,0));
  if(width!==320)await page.screenshot({path:`artifacts/${base.startsWith('https')?'live':'local'}-${width}.png`,fullPage:true});
  await context.close();
