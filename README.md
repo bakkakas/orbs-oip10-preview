@@ -6,9 +6,9 @@ Focused Korean community UI preview. **No live chain integration, real subscript
 - Exact target: **507,540,603 ORBS**.
 - Weekly formula: **USD 67,307.69 / prior-period ORBS/USD 7-day TWAP**.
 - Six completed illustrative rounds and one pending example, with explicitly illustrative weekly dates starting 2026-11-13. No transaction hashes are fabricated.
-- Numeric TWAP input, slider, presets, invalid-value handling and over-remaining-balance warning. Simulator never modifies historical progress.
-- Responsive weekly table with state/week filters, ordering, empty state and keyboard-accessible detail dialog.
-- Telegram/email/web-push preference prototype stored only in browser localStorage; preview message only.
+- Summary cards: initial 10 billion ORBS minus illustrative cumulative burns; latest completed reference price; completed rounds out of 52. The former simulator has been removed.
+- Compact completed-only weekly table with period filters, ordering and keyboard-accessible details. Pending rounds are never shown.
+- Telegram-only preference prototype below the history table, stored in browser localStorage; preview message only.
 - Proposal and Korean explainer links. All live-integration inputs marked pending.
 
 ## Local verification
@@ -47,9 +47,15 @@ The contract display and Etherscan link temporarily use the user-supplied ORBS s
 
 ## Header market price and weekly history
 
-- Header: CoinGecko `orbs` USD spot price, 24-hour percentage change and provider update time. Updates every 60 seconds while visible; 10-second request timeout. Missing change is hidden, never treated as 0%.
+- Header: official ORBS mark plus CoinGecko `orbs` USD spot price rounded to exactly four decimal places, 24-hour percentage change and provider update time. Updates every 60 seconds while visible; 10-second request timeout. Missing change is hidden, never treated as 0%.
 - Quotes older than five minutes, invalid values, network/HTTP failures and stale resumed tabs are not displayed as current. Unavailable prices display a dash and a translated status. The public free endpoint may rate-limit; there is no fabricated fallback.
 - Spot price does not feed the 7-day reference price, burn history or 32% illustrative progress.
 - History has Date / Round, 7-day reference price (USD/ORBS), Amount burned (ORBS), and Transaction columns. Select a date for details; scroll the table horizontally on mobile.
-- Actual hashes are currently unknown, so the transaction cells say Not connected. A supplied valid 32-byte EVM hash renders as a shortened hash with the exact Etherscan transaction link. The current deployment has no such hashes.
+- Actual hashes are currently unknown. At the user's request all sample transaction cells temporarily link to the supplied ORBS staking address (an address page, not a transaction); each is labeled Temporary address. A supplied valid full transaction hash would instead render the exact transaction link.
 - `tests/history-price.cjs` checks live quotes and table layout at three widths, then separately mocks missing/negative change, stale/invalid/error responses and refresh failure. It tests a synthetic transaction hash only in an isolated browser; never deployed as data.
+
+## Summary cards and completed-only view
+
+The total-supply card is a clearly labeled example: 10,000,000,000 minus 162,412,992.96 = 9,837,587,007.04 ORBS, not an on-chain totalSupply read. The reference-price card uses the highest completed round, not the live spot quote. Completion is 6 / 52. Completed-only filtering also applies to period filters and the row count.
+
+Telegram preferences now use `orbs-oip10-preview-telegram-v2`, so previously selected email or push channels cannot silently affect the one-option UI. The former simulator fields are absent from the copy editor.

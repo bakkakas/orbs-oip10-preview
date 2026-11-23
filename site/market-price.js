@@ -1,5 +1,5 @@
-import {t,tr as msg,language} from './i18n.js?v=6';
-import {parseQuote,QUOTE_MAX_AGE_MS} from './market-model.js?v=6';
+import {t,tr as msg,language} from './i18n.js?v=7';
+import {parseQuote,QUOTE_MAX_AGE_MS} from './market-model.js?v=7';
 export const PRICE_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=orbs&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true';
 export function initMarketPrice() {
   const box=document.getElementById('market'),price=document.getElementById('market-price'),change=document.getElementById('market-change'),status=document.getElementById('market-status');
@@ -12,7 +12,7 @@ export function initMarketPrice() {
       const response=await fetch(PRICE_URL,{signal:controller.signal,cache:'no-store'});
       if(!response.ok)throw new Error('quote unavailable');
       quote=parseQuote(await response.json());
-      price.textContent='$'+quote.price.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:8});
+      price.textContent='$'+quote.price.toLocaleString('en-US',{minimumFractionDigits:4,maximumFractionDigits:4});
       change.hidden=quote.change===null;
       if(quote.change!==null){const pct=Number(quote.change.toFixed(2));change.textContent=(pct>0?'+':'')+pct.toFixed(2)+'%';change.dataset.direction=pct>0?'up':pct<0?'down':'flat';change.title=t('24시간');change.setAttribute('aria-label',t('24시간')+' '+change.textContent);}
       const date=new Date(quote.updatedAt);

@@ -1,4 +1,4 @@
-import {t,language} from './i18n.js?v=6';
+import {t,language} from './i18n.js?v=7';
 // Preview-only copy editing. No server writes or shared publishing.
 export function initCopyEditor() {
   const $ = id => document.getElementById(id);

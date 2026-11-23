@@ -27,3 +27,11 @@ export function transactionLink(hash) {
   return typeof hash === 'string' && /^0x[0-9a-fA-F]{64}$/.test(hash) ? `https://etherscan.io/tx/${hash}` : null;
 }
 export function shortHash(hash) { return transactionLink(hash) ? `${hash.slice(0,8)}…${hash.slice(-6)}` : '—'; }
+
+export const INITIAL_SUPPLY = 10000000000;
+export const PLANNED_ROUNDS = 52;
+export const TEMPORARY_ADDRESS = '0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3';
+export const TEMPORARY_ADDRESS_URL = `https://etherscan.io/address/${TEMPORARY_ADDRESS}`;
+export const completedRecords = records.filter(r=>r.status==='complete');
+export const latestCompleted = completedRecords.reduce((latest,r)=>!latest||r.week>latest.week?r:latest,null);
+export const exampleTotalSupply = INITIAL_SUPPLY - cumulative;
