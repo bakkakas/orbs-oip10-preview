@@ -19,7 +19,7 @@ for(const width of [1440,390,320]){
  check((await page.locator('.temporary-contract').innerText()).includes('실제 소각 컨트랙트가 아니야'),'temporary contract disclosure');
  const title=page.locator('[data-copy=hero-title]');const originalTitle=await title.innerText();
  await page.locator('#edit-copy').click();
- check((await page.locator('#copy-scope').innerText()).includes('이 브라우저에만'),'local-only scope');
+ check((await page.locator('#copy-scope').innerText()).includes('이 브라우저의 현재 언어에만'),'local-only scope');
  const titleField=page.locator('#copy-field-hero-title');
  await titleField.fill('편집 취소');await page.locator('#cancel-copy').click();check(await title.innerText()===originalTitle,'cancel leaves live copy unchanged');
  await page.locator('#edit-copy').click();await titleField.fill('<img src=x onerror=alert(1)> 시즌 1');
