@@ -318,9 +318,9 @@ export const translations = {
     "ja": "履歴の説明"
   },
   "실제 거래·날짜·해시는 아직 없어. 각 행을 열어 계산 근거를 볼 수 있어.": {
-    "en": "No real transactions, dates or hashes yet. Open a row to inspect the calculation.",
-    "ja": "実際の取引・日時・ハッシュはまだありません。各行から計算の根拠を確認できます。",
-    "ko": "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함."
+    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
+    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
+    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
   },
   "상태": {
     "en": "Status",
@@ -792,9 +792,9 @@ export const translations = {
     "ko": "예정된 요일만으로 완료를 추정하여 발송하지 않음. 가격 조회 실패·체인 재구성·처리된 거래는 검증 전 발송을 차단함."
   },
   "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함.": {
-    "en": "No real transactions, dates or hashes yet. Open a row to inspect the calculation.",
-    "ja": "実際の取引・日時・ハッシュはまだありません。各行から計算の根拠を確認できます。",
-    "ko": "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함."
+    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
+    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
+    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
   },
   "조건에 맞는 예시 내역이 없음.": {
     "en": "No sample records match these filters.",
@@ -930,5 +930,85 @@ export const translations = {
     "en": "Text file downloaded. Share this file to update the common site.",
     "ja": "文言ファイルを保存しました。共通サイトに反映するには、このファイルをお送りください。",
     "ko": "문구 파일을 내려받았음. 공통 사이트 반영 시 해당 파일 전달이 필요함."
+  },
+  "현재 ORBS 시장가격": {
+    "ko": "현재 ORBS 시장가격",
+    "en": "Current ORBS market price",
+    "ja": "現在のORBS市場価格"
+  },
+  "가격 조회 중": {
+    "ko": "가격 조회 중",
+    "en": "Loading price",
+    "ja": "価格を取得中"
+  },
+  "가격 조회 불가": {
+    "ko": "가격 조회 불가",
+    "en": "Price unavailable",
+    "ja": "価格取得不可"
+  },
+  "가격 갱신 필요": {
+    "ko": "가격 갱신 필요",
+    "en": "Price update required",
+    "ja": "価格の更新が必要"
+  },
+  "24시간": {
+    "ko": "24시간",
+    "en": "24h",
+    "ja": "24時間"
+  },
+  "시세 갱신 {0}": {
+    "ko": "시세 갱신 {0}",
+    "en": "Updated {0}",
+    "ja": "更新 {0}"
+  },
+  "날짜 / 회차": {
+    "ko": "날짜 / 회차",
+    "en": "Date / Round",
+    "ja": "日付 / 回"
+  },
+  "7일 기준가격": {
+    "ko": "7일 기준가격",
+    "en": "7-day reference price",
+    "ja": "7日間の基準価格"
+  },
+  "소각 수량": {
+    "ko": "소각 수량",
+    "en": "Amount burned",
+    "ja": "バーン数量"
+  },
+  "트랜잭션": {
+    "ko": "트랜잭션",
+    "en": "Transaction",
+    "ja": "トランザクション"
+  },
+  "{0} ({1}회차)": {
+    "ko": "{0} ({1}회차)",
+    "en": "{0} (Round {1})",
+    "ja": "{0} (第{1}回)"
+  },
+  "미연동": {
+    "ko": "미연동",
+    "en": "Not connected",
+    "ja": "未連携"
+  },
+  "실제 거래 해시 확보 후 Etherscan 링크 제공 예정임.": {
+    "ko": "실제 거래 해시 확보 후 Etherscan 링크 제공 예정임.",
+    "en": "Etherscan link will be available once the actual transaction hash is known.",
+    "ja": "実際の取引ハッシュの取得後、Etherscanリンクを表示します。"
+  },
+  "Etherscan에서 트랜잭션 {0} 보기": {
+    "ko": "Etherscan에서 트랜잭션 {0} 보기",
+    "en": "View transaction {0} on Etherscan",
+    "ja": "Etherscanで取引 {0} を確認"
+  },
+  "주간 소각 내역 표 · 좌우 스크롤 가능": {
+    "ko": "주간 소각 내역 표 · 좌우 스크롤 가능",
+    "en": "Weekly burn table · scroll horizontally",
+    "ja": "週次バーン履歴 · 横スクロール可能"
+  },
+  "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.": {
+    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
+    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
+    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
   }
 };

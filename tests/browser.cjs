@@ -9,7 +9,7 @@ const errors=[];const outside=[];fs.mkdirSync('artifacts',{recursive:true});
 try{
 for(const width of [1440,390,320]){
  const context=await browser.newContext({viewport:{width,height:900},isMobile:width<600,hasTouch:width<600});
- const page=await context.newPage();page.setDefaultTimeout(7000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.text());});page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:'))outside.push(r.url());});
+ await context.route('https://api.coingecko.com/api/v3/simple/price?**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({orbs:{usd:.006,usd_24h_change:1.25,last_updated_at:Math.floor(Date.now()/1000)}})}));const page=await context.newPage();page.setDefaultTimeout(7000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.text());});page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:')&&!r.url().startsWith('https://api.coingecko.com/api/v3/simple/price?'))outside.push(r.url());});
  const response=await page.goto(base,{waitUntil:'networkidle'});check(response.status()===200,'HTTP 200');
  await page.locator('#burned').filter({hasText:/[0-9]/}).waitFor();
  check(await page.locator('#sim-amount').innerText()==='3,365,384.50','initial formula');
@@ -47,7 +47,7 @@ for(const width of [1440,390,320]){
  await page.locator('#week-filter').selectOption('early');check(await page.locator('#empty').isVisible(),'empty intersection state');
  await page.locator('#status-filter').selectOption('complete');check(await page.locator('#history-body tr').count()===4,'early complete filter');
  await page.locator('#week-filter').selectOption('recent');check(await page.locator('#history-body tr').count()===2,'recent complete filter');
- await page.locator('#sort-filter').selectOption('asc');check((await page.locator('#history-body tr').first().innerText()).includes('05주차'),'sort');
+ await page.locator('#sort-filter').selectOption('asc');check((await page.locator('#history-body tr').first().innerText()).includes('26.12.11 (5회차)'),'sort');
  await page.getByRole('button',{name:'예시 5주차 상세 보기',exact:true}).click();check(await page.locator('#detail-dialog').isVisible(),'details open');
  check((await page.locator('#dialog-body').innerText()).includes('$0.002658'),'row-specific TWAP');
  check((await page.locator('#dialog-body').innerText()).includes('실제 거래 정보 없음'),'no fake transaction');
@@ -67,7 +67,7 @@ for(const width of [1440,390,320]){
  await context.close();
 }
 check(errors.length===0,'no console or page errors: '+errors.join('; '));
-check(outside.length===0,'no third-party requests or notification calls: '+outside.join('; '));
+check(outside.length===0,'no external requests except the spot price provider: '+outside.join('; '));
 console.log(JSON.stringify({base,checks,widths:[1440,390,320],errors,externalRequests:outside,temporaryContextsClosed:true},null,2));
 }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
