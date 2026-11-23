@@ -11,3 +11,14 @@ test('only valid full EVM transaction hashes receive exact explorer URLs',()=>{c
 test('sample dates do not invent transaction hashes',()=>{assert.equal(records[0].date,'2026-11-13');assert.equal(records[6].date,'2026-12-25');assert.ok(records.every(r=>r.transactionHash===null));});
 
 test('summary uses initial supply minus cumulative and latest completed round only',async()=>{const m=await import('../site/model.js');assert.equal(m.INITIAL_SUPPLY,10000000000);assert.equal(m.exampleTotalSupply,m.INITIAL_SUPPLY-m.cumulative);assert.equal(m.exampleTotalSupply.toFixed(2),'9837587007.04');assert.equal(m.completedRecords.length,6);assert.equal(m.PLANNED_ROUNDS,52);assert.equal(m.latestCompleted.week,6);assert.equal(m.latestCompleted.twap,m.completedRecords.at(-1).twap);assert.ok(m.completedRecords.every(r=>r.status==='complete'));assert.equal(m.TEMPORARY_ADDRESS_URL,'https://etherscan.io/address/'+m.TEMPORARY_ADDRESS);});
+
+test('language quote cache accepts only fresh validated data and bounds error backoff',async()=>{
+ const {readQuoteCache}=await import('../site/market-model.js');
+ const cached={receivedAt:now,payload:payload()};
+ assert.equal(readQuoteCache(cached,now+59999).quote.price,.00603087);
+ assert.equal(readQuoteCache(cached,now+60000),null);
+ for(const receivedAt of [now+1,NaN,'123',null])assert.equal(readQuoteCache({...cached,receivedAt},now),null);
+ assert.equal(readQuoteCache({receivedAt:now,payload:payload({last_updated_at:now/1000-301})},now),null);
+ assert.deepEqual(readQuoteCache({receivedAt:now,failed:true},now),{quote:null,retryAt:now+60000});
+ assert.equal(readQuoteCache({receivedAt:now,failed:true},now+60000),null);
+});

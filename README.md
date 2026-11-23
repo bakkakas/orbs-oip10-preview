@@ -48,7 +48,7 @@ The contract display and Etherscan link temporarily use the user-supplied ORBS s
 
 ## Header market price and weekly history
 
-- Header: official ORBS mark plus CoinGecko `orbs` USD spot price rounded to exactly four decimal places, 24-hour percentage change and provider update time. Updates every 60 seconds while visible; 10-second request timeout. Missing change is hidden, never treated as 0%.
+- Header: official ORBS mark plus CoinGecko `orbs` USD spot price rounded to exactly four decimal places, 24-hour percentage change and provider update time. Updates every 60 seconds while visible; 10-second request timeout. Language switches share a validated quote in tab-scoped sessionStorage for at most 60 seconds, preserving the original provider timestamp. A refresh failure clears the quote in all languages and backs off until the next minute; corrupt, expired or stale cached quotes are rejected. Missing change is hidden, never treated as 0%.
 - Quotes older than five minutes, invalid values, network/HTTP failures and stale resumed tabs are not displayed as current. Unavailable prices display a dash and a translated status. The public free endpoint may rate-limit; there is no fabricated fallback.
 - Spot price does not feed the 7-day reference price, burn history or 32% illustrative progress.
 - History has Date / Round, 7-day reference price (USD/ORBS), Amount burned (ORBS), and Transaction columns. Select a date for details; scroll the table horizontally on mobile.
