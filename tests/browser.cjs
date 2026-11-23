@@ -16,7 +16,7 @@ for(const width of [1440,390,320]){
  check(await page.locator('#history-body tr').count()===7,'all seven illustrative rows');
  check(await page.locator('#explorer').getAttribute('href')==='https://etherscan.io/address/0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3','temporary staking explorer link');
 
- check((await page.locator('.temporary-contract').innerText()).includes('실제 소각 컨트랙트가 아니야'),'temporary contract disclosure');
+ check((await page.locator('.temporary-contract').innerText()).includes('실제 소각 컨트랙트가 아님'),'temporary contract disclosure');
  const title=page.locator('[data-copy=hero-title]');const originalTitle=await title.innerText();
  await page.locator('#edit-copy').click();
  check((await page.locator('#copy-scope').innerText()).includes('이 브라우저의 현재 언어에만'),'local-only scope');
@@ -52,7 +52,7 @@ for(const width of [1440,390,320]){
  check((await page.locator('#dialog-body').innerText()).includes('$0.002658'),'row-specific TWAP');
  check((await page.locator('#dialog-body').innerText()).includes('실제 거래 정보 없음'),'no fake transaction');
  await page.keyboard.press('Escape');check(!await page.locator('#detail-dialog').isVisible(),'escape closes dialog');
- await page.locator('input[value=email]').check();await page.locator('input[value=telegram]').uncheck();await page.getByRole('button',{name:'이 브라우저에 선택 저장',exact:true}).click();check((await page.locator('#prefs-status').innerText()).includes('실제 알림 구독·발송은 없어'),'save disclosure');
+ await page.locator('input[value=email]').check();await page.locator('input[value=telegram]').uncheck();await page.getByRole('button',{name:'이 브라우저에 선택 저장',exact:true}).click();check((await page.locator('#prefs-status').innerText()).includes('실제 알림 구독·발송은 없음'),'save disclosure');
  await page.reload({waitUntil:'networkidle'});check(await page.locator('input[value=email]').isChecked(),'preference persists');check(!await page.locator('input[value=telegram]').isChecked(),'unchecked preference persists');
  await page.locator('#alert-preview').click();check((await page.locator('#dialog-body').innerText()).includes('선택한 채널: 이메일'),'alert preview respects channels');check((await page.locator('#dialog-body').innerText()).includes('실제 발송 없음'),'no send promise');await page.locator('#close-dialog').click();
  await page.locator('input[value=email]').uncheck();await page.getByRole('button',{name:'이 브라우저에 선택 저장',exact:true}).click();check((await page.locator('#prefs-status').innerText()).includes('수신 채널 없음'),'no channels supported');

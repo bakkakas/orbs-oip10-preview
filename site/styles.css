@@ -23,3 +23,9 @@ h1>span:first-child{color:var(--text)}[data-copy]{white-space:pre-line;overflow-
 @media(max-width:900px){.topbar nav{order:3;width:100%;justify-content:space-between;margin:0}.header-tools{margin-left:auto}.header-tools .badge{display:none}}
 @media(max-width:600px){.brand{font-size:23px;gap:9px}.brand-mark{width:40px;height:40px}.brand small{font-size:10px}.header-tools{flex:0 0 auto;gap:7px}.header-tools #edit-copy{font-size:11px;padding:7px 9px}.header-tools #language{font-size:12px;min-width:78px}.topbar{gap:14px}.contract{padding:20px 18px}#contract-address{font-size:19px}.season-title{font-size:clamp(17px,4.8vw,28px)}.hero{gap:20px}.header-tools{flex-wrap:nowrap}}
 @media(max-width:400px){.header-tools{width:100%;justify-content:space-between;margin:0}.topbar nav{order:4}.brand small{font-size:11px}}
+
+/* Keep the address and both controls in one compact row at every viewport. */
+.contract{padding:18px 24px}.contract .label{margin-bottom:3px}.contract-row{display:flex;align-items:center;gap:18px;min-width:0}.contract-row #contract-address{flex:1;min-width:0;margin:0;font-size:clamp(19px,2.15vw,25px);white-space:nowrap;word-break:normal;overflow-wrap:normal;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#70608d transparent;padding:3px 0}.contract-row .actions{flex:none;flex-wrap:nowrap;gap:8px;margin:0;width:auto}.contract .temporary-contract{margin-top:8px}.contract #contract-address:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media(max-width:600px){.contract{padding:16px}.contract-row{gap:10px}.contract-row #contract-address{font-size:19px}.contract #copy-contract{flex:0 0 40px;width:40px;height:44px;padding:8px}.contract #explorer{padding:8px;gap:4px;min-height:44px}.contract #explorer img{width:88px}.contract-row .actions{gap:6px}}
+
+@media(max-width:600px){.contract #explorer img{width:26px;height:26px}.contract #explorer{padding:8px;gap:3px}.contract #explorer>span{font-size:11px}}

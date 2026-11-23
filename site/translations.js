@@ -1,7 +1,8 @@
 export const translations = {
   "OIP-10 ORBS 소각 대시보드 인터랙티브 프리뷰. 예시 데이터이며 실제 온체인 연동 및 알림 발송은 없습니다.": {
     "en": "Interactive OIP-10 ORBS burn dashboard preview. Sample data only; no on-chain integration or notification delivery.",
-    "ja": "OIP-10 ORBSバーンダッシュボードのプレビュー。サンプルデータのみで、オンチェーン連携・通知送信はありません。"
+    "ja": "OIP-10 ORBSバーンダッシュボードのプレビュー。サンプルデータのみで、オンチェーン連携・通知送信はありません。",
+    "ko": "OIP-10 ORBS 소각 대시보드 인터랙티브 프리뷰임. 예시 데이터이며 실제 온체인 연동 및 알림 발송은 없음."
   },
   "본문으로 이동": {
     "en": "Skip to content",
@@ -45,11 +46,13 @@ export const translations = {
   },
   "매주 같은 달러 기준, 가격에 따라 달라지는 ORBS 수량.": {
     "en": "The same USD amount each week. The ORBS quantity changes with price.",
-    "ja": "毎週同じ米ドル基準額で、価格に応じてORBS数量が変わります。"
+    "ja": "毎週同じ米ドル基準額で、価格に応じてORBS数量が変わります。",
+    "ko": "매주 동일한 달러 기준액을 적용하며 가격에 따라 ORBS 소각량이 달라짐."
   },
   "진행률을 살펴보고 7일 TWAP으로 직접 계산해 봐.": {
     "en": "Explore the progress and calculate burns using the 7-day TWAP.",
-    "ja": "進捗を確認し、7日間TWAPでバーン数量を計算できます。"
+    "ja": "進捗を確認し、7日間TWAPでバーン数量を計算できます。",
+    "ko": "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함."
   },
   "온체인 연동 대기": {
     "en": "On-chain integration pending",
@@ -57,11 +60,13 @@ export const translations = {
   },
   "목표와 계산 규칙은 전달된 값.": {
     "en": "Target and formula use the supplied parameters.",
-    "ja": "目標と計算式には提供された値を使用しています。"
+    "ja": "目標と計算式には提供された値を使用しています。",
+    "ko": "목표와 계산 규칙은 제공된 기준값임."
   },
   "아래 누적량·주간 기록·가격은 UI 체험용 예시야.": {
     "en": "Totals, weekly records and prices below are illustrative.",
-    "ja": "以下の累計・週次履歴・価格はUI体験用のサンプルです。"
+    "ja": "以下の累計・週次履歴・価格はUI体験用のサンプルです。",
+    "ko": "아래 누적량·주간 기록·가격은 UI 체험용 예시임."
   },
   "컨트랙트 연동 상태": {
     "en": "Contract integration status",
@@ -73,7 +78,8 @@ export const translations = {
   },
   "임시로 ORBS 스테이킹 컨트랙트를 표시했어. 실제 소각 컨트랙트가 아니야.": {
     "en": "The ORBS staking contract is shown temporarily. This is NOT the burn contract.",
-    "ja": "ORBSステーキングコントラクトを仮表示しています。実際のバーンコントラクトではありません。"
+    "ja": "ORBSステーキングコントラクトを仮表示しています。実際のバーンコントラクトではありません。",
+    "ko": "ORBS 스테이킹 컨트랙트를 임시로 표시했음. 실제 소각 컨트랙트가 아님."
   },
   "실제 소각 체인 · ABI / 이벤트 · 가격 소스는 미확정": {
     "en": "Burn chain · ABI / events · price source: not yet confirmed",
@@ -89,7 +95,8 @@ export const translations = {
   },
   "임시로 표시한 ORBS 스테이킹 컨트랙트 주소를 복사합니다. 실제 소각 주소가 아닙니다.": {
     "en": "Copy the temporary ORBS staking contract address. This is not the burn address.",
-    "ja": "仮表示中のORBSステーキングアドレスをコピーします。バーンアドレスではありません。"
+    "ja": "仮表示中のORBSステーキングアドレスをコピーします。バーンアドレスではありません。",
+    "ko": "임시 ORBS 스테이킹 컨트랙트 주소를 복사함. 실제 소각 주소가 아님."
   },
   "누적 소각 진행률 제목": {
     "en": "Cumulative burn progress title",
@@ -125,15 +132,18 @@ export const translations = {
   },
   "아래 예시 내역 중 ‘완료 예시’만 합산. 대기 예시와 시뮬레이션은 포함하지 않아.": {
     "en": "Sums completed sample rows only. Pending rows and simulations are excluded.",
-    "ja": "完了サンプルのみを合算しています。待機中の行とシミュレーションは含みません。"
+    "ja": "完了サンプルのみを合算しています。待機中の行とシミュレーションは含みません。",
+    "ko": "아래 내역 중 ‘완료 예시’만 합산함. 대기 예시와 시뮬레이션은 제외함."
   },
   "이번 주, 얼마나 소각될까? 제목": {
     "en": "Weekly burn calculator title",
-    "ja": "週間バーン計算機の見出し"
+    "ja": "週間バーン計算機の見出し",
+    "ko": "주간 소각량 계산 제목"
   },
   "이번 주, 얼마나 소각될까?": {
     "en": "How much could burn this week?",
-    "ja": "今週のバーン数量は？"
+    "ja": "今週のバーン数量は？",
+    "ko": "주간 소각량 계산"
   },
   "계산기 설명": {
     "en": "Calculator description",
@@ -141,7 +151,8 @@ export const translations = {
   },
   "직전 기간의 7일 TWAP을 바꿔서 비교해 봐.": {
     "en": "Change the preceding 7-day TWAP to compare outcomes.",
-    "ja": "直前7日間のTWAPを変更して比較できます。"
+    "ja": "直前7日間のTWAPを変更して比較できます。",
+    "ko": "직전 기간의 7일 TWAP을 변경하여 비교 가능함."
   },
   "직전 7일 TWAP": {
     "en": "Preceding 7-day TWAP",
@@ -173,7 +184,8 @@ export const translations = {
   },
   "실시간 가격이 아닌 직접 입력값이야. 7일 TWAP은 시간 가중 평균이며, 단순한 일별 종가 평균이나 현재가와 달라. 소수점 2자리 표시는 UI용이고 실제 정밀도·반올림·마지막 잔량 처리는 확정 후 반영해.": {
     "en": "This is a manual input, not a live price. The 7-day TWAP is time-weighted, not a simple average of daily closes or the current price. Two-decimal display is for the UI; final precision, rounding and remaining-balance rules are pending.",
-    "ja": "リアルタイム価格ではなく手入力値です。7日間TWAPは時間加重平均であり、日次終値の単純平均や現在価格とは異なります。小数点以下2桁は表示用で、実際の精度・丸め・最終残高処理は確定後に反映します。"
+    "ja": "リアルタイム価格ではなく手入力値です。7日間TWAPは時間加重平均であり、日次終値の単純平均や現在価格とは異なります。小数点以下2桁は表示用で、実際の精度・丸め・最終残高処理は確定後に反映します。",
+    "ko": "실시간 가격이 아닌 직접 입력값임. 7일 TWAP은 시간 가중 평균으로, 일별 종가의 단순 평균이나 현재가와 다름. 소수점 2자리 표시는 UI용이며 실제 정밀도·반올림·최종 잔량 처리는 확정 후 반영 예정임."
   },
   "주간 소각 알림 제목": {
     "en": "Weekly burn alerts title",
@@ -189,11 +201,13 @@ export const translations = {
   },
   "새 소각 거래가 확정됐을 때 한 번.": {
     "en": "Once per newly confirmed burn transaction.",
-    "ja": "新しいバーン取引の確定時に1回通知します。"
+    "ja": "新しいバーン取引の確定時に1回通知します。",
+    "ko": "새 소각 거래 확정 시 1회 알림 예정임."
   },
   "금액, 적용 TWAP, 누적 진행률과 거래 링크를 전달해.": {
     "en": "Includes amount, TWAP, cumulative progress and a transaction link.",
-    "ja": "数量・適用TWAP・累計進捗・取引リンクをお届けします。"
+    "ja": "数量・適用TWAP・累計進捗・取引リンクをお届けします。",
+    "ko": "금액·적용 TWAP·누적 진행률·거래 링크를 제공함."
   },
   "받을 채널 선택": {
     "en": "Choose channels",
@@ -249,35 +263,43 @@ export const translations = {
   },
   "설정만 이 기기에 저장해. 연락처 수집, 구독 등록, 브라우저 권한 요청, 실제 알림 발송은 하지 않아.": {
     "en": "Only settings are saved on this device. No contact collection, subscription, permission request or actual notification delivery.",
-    "ja": "設定のみをこの端末に保存します。連絡先の収集・購読登録・権限要求・実際の通知送信は行いません。"
+    "ja": "設定のみをこの端末に保存します。連絡先の収集・購読登録・権限要求・実際の通知送信は行いません。",
+    "ko": "설정만 현재 기기에 저장함. 연락처 수집·구독 등록·브라우저 권한 요청·실제 알림 발송은 없음."
   },
   "실제 알림은 어떻게 동작해?": {
     "en": "How would real alerts work?",
-    "ja": "実際の通知はどう動く？"
+    "ja": "実際の通知はどう動く？",
+    "ko": "실제 알림 처리 방식"
   },
   "확정 체인의 RPC 또는 인덱서에서 소각 이벤트를 수집.": {
     "en": "Collect burn events from the confirmed chain via RPC or an indexer.",
-    "ja": "確定したチェーンのRPCまたはインデクサーからバーンイベントを収集。"
+    "ja": "確定したチェーンのRPCまたはインデクサーからバーンイベントを収集。",
+    "ko": "확정 체인의 RPC 또는 인덱서에서 소각 이벤트를 수집함."
   },
   "거래 성공·컨트랙트·이벤트·블록 최종성을 검증.": {
     "en": "Verify transaction success, contract, event and block finality.",
-    "ja": "取引成功・コントラクト・イベント・ブロックのファイナリティを検証。"
+    "ja": "取引成功・コントラクト・イベント・ブロックのファイナリティを検証。",
+    "ko": "거래 성공·컨트랙트·이벤트·블록 최종성을 검증함."
   },
   "선택한 가격 소스와 정확한 직전 7일 구간으로 TWAP 계산.": {
     "en": "Calculate TWAP from the selected source over the exact preceding 7-day window.",
-    "ja": "選択した価格ソースと正確な直前7日間の区間からTWAPを計算。"
+    "ja": "選択した価格ソースと正確な直前7日間の区間からTWAPを計算。",
+    "ko": "선택한 가격 소스와 정확한 직전 7일 구간으로 TWAP을 계산함."
   },
   "검증된 소각 수량과 가격 근거를 스냅샷으로 저장.": {
     "en": "Store verified burn amounts and price evidence as snapshots.",
-    "ja": "検証済みバーン数量と価格の根拠をスナップショットに保存。"
+    "ja": "検証済みバーン数量と価格の根拠をスナップショットに保存。",
+    "ko": "검증된 소각 수량과 가격 근거를 스냅샷으로 저장함."
   },
   "새 소각만 중복 제거 후 채널별 발송. 실패는 재시도.": {
     "en": "Deduplicate new burns and deliver per channel; retry failures.",
-    "ja": "新しいバーンの重複を除き、チャネル別に送信。失敗時は再試行。"
+    "ja": "新しいバーンの重複を除き、チャネル別に送信。失敗時は再試行。",
+    "ko": "새 소각만 중복 제거 후 채널별로 발송함. 실패 시 재시도함."
   },
   "정해진 요일에 ‘완료’라고 추정해서 보내지 않아. 가격 조회 실패·체인 재구성·이미 처리한 거래는 검증 전 발송을 막아.": {
     "en": "A scheduled day alone never implies completion. Failed price lookups, chain reorganizations and previously processed transactions block delivery until verified.",
-    "ja": "予定の曜日だけで完了と判断して送信しません。価格取得失敗・チェーン再編・処理済み取引は、検証前の送信を防ぎます。"
+    "ja": "予定の曜日だけで完了と判断して送信しません。価格取得失敗・チェーン再編・処理済み取引は、検証前の送信を防ぎます。",
+    "ko": "예정된 요일만으로 완료를 추정하여 발송하지 않음. 가격 조회 실패·체인 재구성·처리된 거래는 검증 전 발송을 차단함."
   },
   "주간 소각 내역 제목": {
     "en": "Weekly burn history title",
@@ -297,7 +319,8 @@ export const translations = {
   },
   "실제 거래·날짜·해시는 아직 없어. 각 행을 열어 계산 근거를 볼 수 있어.": {
     "en": "No real transactions, dates or hashes yet. Open a row to inspect the calculation.",
-    "ja": "実際の取引・日時・ハッシュはまだありません。各行から計算の根拠を確認できます。"
+    "ja": "実際の取引・日時・ハッシュはまだありません。各行から計算の根拠を確認できます。",
+    "ko": "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함."
   },
   "상태": {
     "en": "Status",
@@ -357,11 +380,13 @@ export const translations = {
   },
   "조건에 맞는 예시 내역이 없어.": {
     "en": "No sample records match these filters.",
-    "ja": "条件に一致するサンプルはありません。"
+    "ja": "条件に一致するサンプルはありません。",
+    "ko": "조건에 맞는 예시 내역이 없음."
   },
   "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산. 실제 소각량은 확정 이벤트에서 읽고, USD 환산액과 계산 규칙을 별도로 검증할 예정이야.": {
     "en": "Each completed sample is $67,307.69 divided by its TWAP. Real burn amounts will come from confirmed events, with USD values and calculation rules verified separately.",
-    "ja": "各完了サンプルは67,307.69米ドル÷該当TWAPで計算しています。実際のバーン数量は確定イベントから取得し、米ドル換算額と計算ルールは別途検証します。"
+    "ja": "各完了サンプルは67,307.69米ドル÷該当TWAPで計算しています。実際のバーン数量は確定イベントから取得し、米ドル換算額と計算ルールは別途検証します。",
+    "ko": "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산함. 실제 소각량은 확정 이벤트에서 조회하며, USD 환산액과 계산 규칙은 별도로 검증 예정임."
   },
   "출처 제목": {
     "en": "Sources title",
@@ -373,7 +398,8 @@ export const translations = {
   },
   "이 프리뷰는 커뮤니티 UI 검토용이며 공식 온체인 현황이 아니야.": {
     "en": "This is a community UI preview, not an official on-chain status page.",
-    "ja": "このプレビューはコミュニティのUI確認用であり、公式オンチェーン状況ではありません。"
+    "ja": "このプレビューはコミュニティのUI確認用であり、公式オンチェーン状況ではありません。",
+    "ko": "커뮤니티 UI 검토용 프리뷰이며 공식 온체인 현황이 아님."
   },
   "한국어 OIP-10 설명 ↗": {
     "en": "OIP-10 explainer (Korean) ↗",
@@ -397,11 +423,13 @@ export const translations = {
   },
   "제목과 설명을 직접 바꿔 봐. 저장한 문구는 이 브라우저의 현재 언어에만 적용돼. 공통 사이트나 다른 기기에는 반영되지 않아.": {
     "en": "Edit titles and descriptions. Saved text applies only to the current language in this browser, not to the shared site or other devices.",
-    "ja": "見出しや説明を編集できます。保存した文言は、このブラウザの現在の言語にのみ適用されます。共通サイトや他の端末には反映されません。"
+    "ja": "見出しや説明を編集できます。保存した文言は、このブラウザの現在の言語にのみ適用されます。共通サイトや他の端末には反映されません。",
+    "ko": "제목과 설명을 직접 수정 가능함. 저장한 문구는 이 브라우저의 현재 언어에만 적용됨. 공통 사이트나 다른 기기에는 반영되지 않음."
   },
   "소각 수치·계산 규칙·주소와 예시/임시 안내는 그대로 유지돼.": {
     "en": "Burn figures, calculation rules, addresses and sample/temporary notices remain unchanged.",
-    "ja": "バーン数値・計算ルール・アドレス・サンプル／仮表示の案内は変更されません。"
+    "ja": "バーン数値・計算ルール・アドレス・サンプル／仮表示の案内は変更されません。",
+    "ko": "소각 수치·계산 규칙·주소 및 예시/임시 안내는 유지됨."
   },
   "저장하고 적용": {
     "en": "Save and apply",
@@ -429,7 +457,8 @@ export const translations = {
   },
   "계산기와 필터를 사용하려면 JavaScript를 활성화해 줘. 이 사이트는 예시 데이터 프리뷰이며 실제 온체인 정보가 아니야.": {
     "en": "Enable JavaScript to use the calculator and filters. This site uses sample data, not real on-chain information.",
-    "ja": "計算機とフィルターを使用するにはJavaScriptを有効にしてください。このサイトはサンプルデータであり、実際のオンチェーン情報ではありません。"
+    "ja": "計算機とフィルターを使用するにはJavaScriptを有効にしてください。このサイトはサンプルデータであり、実際のオンチェーン情報ではありません。",
+    "ko": "계산기와 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님."
   },
   "예시 {0}%, {1} ORBS": {
     "en": "Sample {0}%, {1} ORBS",
@@ -437,27 +466,33 @@ export const translations = {
   },
   "임시 ORBS 스테이킹 주소를 복사했어. 실제 소각 주소가 아니야.": {
     "en": "Temporary ORBS staking address copied. This is not the burn address.",
-    "ja": "仮のORBSステーキングアドレスをコピーしました。バーンアドレスではありません。"
+    "ja": "仮のORBSステーキングアドレスをコピーしました。バーンアドレスではありません。",
+    "ko": "임시 ORBS 스테이킹 주소를 복사했음. 실제 소각 주소가 아님."
   },
   "자동 복사를 사용할 수 없어. 위 주소를 선택해서 복사해 줘.": {
     "en": "Automatic copy is unavailable. Select and copy the address above.",
-    "ja": "自動コピーを利用できません。上のアドレスを選択してコピーしてください。"
+    "ja": "自動コピーを利用できません。上のアドレスを選択してコピーしてください。",
+    "ko": "자동 복사를 사용할 수 없음. 위 주소 선택 후 직접 복사 필요함."
   },
   "$0.000001 이상 $1,000 이하의 유효한 가격을 입력해 줘. 0이나 빈 값으로는 계산할 수 없어.": {
     "en": "Enter a valid price between $0.000001 and $1,000. Zero or empty values cannot be calculated.",
-    "ja": "0.000001～1,000米ドルの有効な価格を入力してください。0や空欄では計算できません。"
+    "ja": "0.000001～1,000米ドルの有効な価格を入力してください。0や空欄では計算できません。",
+    "ko": "$0.000001 이상 $1,000 이하의 유효한 가격 입력이 필요함. 0 또는 빈 값은 계산 불가함."
   },
   "전체 목표의 {0}%에 해당해. 누적 예시에는 합산하지 않아.": {
     "en": "Equals {0}% of the total target. Not added to the sample cumulative total.",
-    "ja": "総目標の{0}%に相当します。サンプル累計には加算しません。"
+    "ja": "総目標の{0}%に相当します。サンプル累計には加算しません。",
+    "ko": "전체 목표의 {0}%에 해당함. 누적 예시에는 합산하지 않음."
   },
   "가격을 입력하면 계산 결과가 표시돼.": {
     "en": "Enter a price to see the result.",
-    "ja": "価格を入力すると計算結果が表示されます。"
+    "ja": "価格を入力すると計算結果が表示されます。",
+    "ko": "가격 입력 시 계산 결과가 표시됨."
   },
   " 이 계산값은 예시 잔여량을 초과해. 실제 마지막 소각의 잔량 제한 규칙은 미확정이야.": {
     "en": " This exceeds the sample remaining balance. The final burn balance-cap rule is not yet confirmed.",
-    "ja": " この計算値はサンプル残高を超えています。最終バーンの残高上限ルールは未確定です。"
+    "ja": " この計算値はサンプル残高を超えています。最終バーンの残高上限ルールは未確定です。",
+    "ko": " 해당 계산값은 예시 잔여량을 초과함. 실제 최종 소각의 잔량 제한 규칙은 미확정임."
   },
   "슬라이더 범위의 가격 {0} USD / ORBS": {
     "en": "Slider price {0} USD / ORBS",
@@ -469,7 +504,8 @@ export const translations = {
   },
   "가상 주차이며 실제 날짜 또는 거래를 의미하지 않아.": {
     "en": "This is an illustrative week, not an actual date or transaction.",
-    "ja": "仮想の週であり、実際の日付や取引を示すものではありません。"
+    "ja": "仮想の週であり、実際の日付や取引を示すものではありません。",
+    "ko": "가상 주차이며 실제 날짜 또는 거래를 의미하지 않음."
   },
   "완료 예시 · 온체인 검증 아님": {
     "en": "Completed sample · not on-chain verified",
@@ -529,7 +565,8 @@ export const translations = {
   },
   "표시값은 소수점 2자리 반올림. 누적 계산은 반올림 전 값을 사용해. 실제 연동에서는 이벤트 수량과 공식 정밀도를 기준으로 검증해.": {
     "en": "Display values are rounded to 2 decimals; cumulative calculations use unrounded values. Live integration will verify event amounts and official precision.",
-    "ja": "表示値は小数点以下2桁に丸めています。累計計算には丸め前の値を使用します。実連携時はイベント数量と公式精度を検証します。"
+    "ja": "表示値は小数点以下2桁に丸めています。累計計算には丸め前の値を使用します。実連携時はイベント数量と公式精度を検証します。",
+    "ko": "표시값은 소수점 2자리로 반올림함. 누적 계산은 반올림 전 값을 사용함. 실제 연동 시 이벤트 수량과 공식 정밀도를 기준으로 검증함."
   },
   "예시 {0}주차": {
     "en": "Sample week {0}",
@@ -553,35 +590,43 @@ export const translations = {
   },
   "이 브라우저에 저장된 체험용 선택을 불러왔어. 실제 구독은 아니야.": {
     "en": "Loaded demo choices from this browser. This is not a real subscription.",
-    "ja": "このブラウザの体験用選択を読み込みました。実際の購読ではありません。"
+    "ja": "このブラウザの体験用選択を読み込みました。実際の購読ではありません。",
+    "ko": "이 브라우저에 저장된 체험용 선택을 불러왔음. 실제 구독이 아님."
   },
   "저장된 선택을 불러오지 못했어. 기본값으로 체험할 수 있어.": {
     "en": "Could not load saved choices. You can use the defaults.",
-    "ja": "保存した選択を読み込めませんでした。初期設定で体験できます。"
+    "ja": "保存した選択を読み込めませんでした。初期設定で体験できます。",
+    "ko": "저장된 선택을 불러오지 못했음. 기본값으로 체험 가능함."
   },
   "선택을 변경했어. 저장 버튼을 누르면 이 브라우저에만 기억해.": {
     "en": "Choices changed. Save to remember them in this browser only.",
-    "ja": "選択を変更しました。保存すると、このブラウザにのみ記憶します。"
+    "ja": "選択を変更しました。保存すると、このブラウザにのみ記憶します。",
+    "ko": "선택을 변경했음. 저장 시 이 브라우저에만 적용됨."
   },
   "체험용 선택을 이 브라우저에 저장했어. 실제 알림 구독·발송은 없어.": {
     "en": "Demo choices saved in this browser. No real subscription or notification delivery.",
-    "ja": "体験用選択をこのブラウザに保存しました。実際の購読・通知送信はありません。"
+    "ja": "体験用選択をこのブラウザに保存しました。実際の購読・通知送信はありません。",
+    "ko": "체험용 선택을 이 브라우저에 저장했음. 실제 알림 구독·발송은 없음."
   },
   "수신 채널 없음으로 저장했어. 실제 구독은 없어.": {
     "en": "Saved with no channels selected. No real subscription.",
-    "ja": "受信チャネルなしで保存しました。実際の購読はありません。"
+    "ja": "受信チャネルなしで保存しました。実際の購読はありません。",
+    "ko": "수신 채널 없음으로 저장했음. 실제 구독은 없음."
   },
   "브라우저 저장소를 사용할 수 없어 저장하지 못했어. 이 화면에서만 체험할 수 있어.": {
     "en": "Browser storage is unavailable. Choices are not saved and apply only to this screen.",
-    "ja": "ブラウザの保存領域を利用できません。保存されず、この画面のみで体験できます。"
+    "ja": "ブラウザの保存領域を利用できません。保存されず、この画面のみで体験できます。",
+    "ko": "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 현재 화면에서만 체험 가능함."
   },
   "저장된 선택을 지웠어. 기본 예시(Telegram)로 돌아왔어.": {
     "en": "Saved choices cleared. Restored the default Telegram example.",
-    "ja": "保存した選択を削除し、初期サンプルのTelegramに戻しました。"
+    "ja": "保存した選択を削除し、初期サンプルのTelegramに戻しました。",
+    "ko": "저장된 선택을 삭제했음. 기본 예시(Telegram)로 복원했음."
   },
   "저장소에 접근할 수 없어 삭제 여부를 확인하지 못했어.": {
     "en": "Storage is inaccessible; deletion could not be confirmed.",
-    "ja": "保存領域にアクセスできず、削除を確認できませんでした。"
+    "ja": "保存領域にアクセスできず、削除を確認できませんでした。",
+    "ko": "저장소 접근 불가로 삭제 여부를 확인하지 못했음."
   },
   "소각 알림 메시지 예시": {
     "en": "Sample burn notification",
@@ -609,26 +654,281 @@ export const translations = {
   },
   "실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.": {
     "en": "The live service would include a confirmed transaction link, burn time and price window. No transaction exists here, so no link is fabricated.",
-    "ja": "実サービスでは確定取引リンク・バーン時刻・価格区間を提供します。ここには実際の取引がないため、リンクは作成していません。"
+    "ja": "実サービスでは確定取引リンク・バーン時刻・価格区間を提供します。ここには実際の取引がないため、リンクは作成していません。",
+    "ko": "실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공함. 현재 실제 거래가 없어 링크를 생성하지 않았음."
   },
   "각 문구는 공백이 아닌 1~2,000자로 입력해 줘.": {
     "en": "Enter 1–2,000 nonblank characters for each field.",
-    "ja": "各項目に空白以外の1～2,000文字を入力してください。"
+    "ja": "各項目に空白以外の1～2,000文字を入力してください。",
+    "ko": "각 문구는 공백이 아닌 1~2,000자 입력이 필요함."
   },
   "기본 문구로 채웠어. 저장하고 적용을 눌러야 반영돼.": {
     "en": "Defaults filled in. Click Save and apply to use them.",
-    "ja": "初期文言を入力しました。「保存して適用」で反映されます。"
+    "ja": "初期文言を入力しました。「保存して適用」で反映されます。",
+    "ko": "기본 문구로 채웠음. 저장하고 적용 시 반영됨."
   },
   "브라우저 저장소를 사용할 수 없어 저장하지 못했어. 문구 파일 받기로 내용을 보관할 수 있어.": {
     "en": "Browser storage is unavailable, so text was not saved. Download the text file to keep a copy.",
-    "ja": "ブラウザの保存領域を利用できず、保存できませんでした。文言ファイルを保存して保管できます。"
+    "ja": "ブラウザの保存領域を利用できず、保存できませんでした。文言ファイルを保存して保管できます。",
+    "ko": "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 문구 파일 받기로 내용 보관 가능함."
   },
   "문구 파일을 받았어. 공통 사이트에 반영하려면 이 파일을 전달해 줘.": {
     "en": "Text file downloaded. Share this file to update the common site.",
-    "ja": "文言ファイルを保存しました。共通サイトに反映するには、このファイルをお送りください。"
+    "ja": "文言ファイルを保存しました。共通サイトに反映するには、このファイルをお送りください。",
+    "ko": "문구 파일을 내려받았음. 공통 사이트 반영 시 해당 파일 전달이 필요함."
   },
   "없음": {
     "en": "None",
     "ja": "なし"
+  },
+  "OIP-10 ORBS 소각 대시보드 인터랙티브 프리뷰임. 예시 데이터이며 실제 온체인 연동 및 알림 발송은 없음.": {
+    "en": "Interactive OIP-10 ORBS burn dashboard preview. Sample data only; no on-chain integration or notification delivery.",
+    "ja": "OIP-10 ORBSバーンダッシュボードのプレビュー。サンプルデータのみで、オンチェーン連携・通知送信はありません。",
+    "ko": "OIP-10 ORBS 소각 대시보드 인터랙티브 프리뷰임. 예시 데이터이며 실제 온체인 연동 및 알림 발송은 없음."
+  },
+  "매주 동일한 달러 기준액을 적용하며 가격에 따라 ORBS 소각량이 달라짐.": {
+    "en": "The same USD amount each week. The ORBS quantity changes with price.",
+    "ja": "毎週同じ米ドル基準額で、価格に応じてORBS数量が変わります。",
+    "ko": "매주 동일한 달러 기준액을 적용하며 가격에 따라 ORBS 소각량이 달라짐."
+  },
+  "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함.": {
+    "en": "Explore the progress and calculate burns using the 7-day TWAP.",
+    "ja": "進捗を確認し、7日間TWAPでバーン数量を計算できます。",
+    "ko": "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함."
+  },
+  "목표와 계산 규칙은 제공된 기준값임.": {
+    "en": "Target and formula use the supplied parameters.",
+    "ja": "目標と計算式には提供された値を使用しています。",
+    "ko": "목표와 계산 규칙은 제공된 기준값임."
+  },
+  "아래 누적량·주간 기록·가격은 UI 체험용 예시임.": {
+    "en": "Totals, weekly records and prices below are illustrative.",
+    "ja": "以下の累計・週次履歴・価格はUI体験用のサンプルです。",
+    "ko": "아래 누적량·주간 기록·가격은 UI 체험용 예시임."
+  },
+  "ORBS 스테이킹 컨트랙트를 임시로 표시했음. 실제 소각 컨트랙트가 아님.": {
+    "en": "The ORBS staking contract is shown temporarily. This is NOT the burn contract.",
+    "ja": "ORBSステーキングコントラクトを仮表示しています。実際のバーンコントラクトではありません。",
+    "ko": "ORBS 스테이킹 컨트랙트를 임시로 표시했음. 실제 소각 컨트랙트가 아님."
+  },
+  "임시 ORBS 스테이킹 컨트랙트 주소를 복사함. 실제 소각 주소가 아님.": {
+    "en": "Copy the temporary ORBS staking contract address. This is not the burn address.",
+    "ja": "仮表示中のORBSステーキングアドレスをコピーします。バーンアドレスではありません。",
+    "ko": "임시 ORBS 스테이킹 컨트랙트 주소를 복사함. 실제 소각 주소가 아님."
+  },
+  "아래 내역 중 ‘완료 예시’만 합산함. 대기 예시와 시뮬레이션은 제외함.": {
+    "en": "Sums completed sample rows only. Pending rows and simulations are excluded.",
+    "ja": "完了サンプルのみを合算しています。待機中の行とシミュレーションは含みません。",
+    "ko": "아래 내역 중 ‘완료 예시’만 합산함. 대기 예시와 시뮬레이션은 제외함."
+  },
+  "주간 소각량 계산 제목": {
+    "en": "Weekly burn calculator title",
+    "ja": "週間バーン計算機の見出し",
+    "ko": "주간 소각량 계산 제목"
+  },
+  "주간 소각량 계산": {
+    "en": "How much could burn this week?",
+    "ja": "今週のバーン数量は？",
+    "ko": "주간 소각량 계산"
+  },
+  "직전 기간의 7일 TWAP을 변경하여 비교 가능함.": {
+    "en": "Change the preceding 7-day TWAP to compare outcomes.",
+    "ja": "直前7日間のTWAPを変更して比較できます。",
+    "ko": "직전 기간의 7일 TWAP을 변경하여 비교 가능함."
+  },
+  "실시간 가격이 아닌 직접 입력값임. 7일 TWAP은 시간 가중 평균으로, 일별 종가의 단순 평균이나 현재가와 다름. 소수점 2자리 표시는 UI용이며 실제 정밀도·반올림·최종 잔량 처리는 확정 후 반영 예정임.": {
+    "en": "This is a manual input, not a live price. The 7-day TWAP is time-weighted, not a simple average of daily closes or the current price. Two-decimal display is for the UI; final precision, rounding and remaining-balance rules are pending.",
+    "ja": "リアルタイム価格ではなく手入力値です。7日間TWAPは時間加重平均であり、日次終値の単純平均や現在価格とは異なります。小数点以下2桁は表示用で、実際の精度・丸め・最終残高処理は確定後に反映します。",
+    "ko": "실시간 가격이 아닌 직접 입력값임. 7일 TWAP은 시간 가중 평균으로, 일별 종가의 단순 평균이나 현재가와 다름. 소수점 2자리 표시는 UI용이며 실제 정밀도·반올림·최종 잔량 처리는 확정 후 반영 예정임."
+  },
+  "새 소각 거래 확정 시 1회 알림 예정임.": {
+    "en": "Once per newly confirmed burn transaction.",
+    "ja": "新しいバーン取引の確定時に1回通知します。",
+    "ko": "새 소각 거래 확정 시 1회 알림 예정임."
+  },
+  "금액·적용 TWAP·누적 진행률·거래 링크를 제공함.": {
+    "en": "Includes amount, TWAP, cumulative progress and a transaction link.",
+    "ja": "数量・適用TWAP・累計進捗・取引リンクをお届けします。",
+    "ko": "금액·적용 TWAP·누적 진행률·거래 링크를 제공함."
+  },
+  "설정만 현재 기기에 저장함. 연락처 수집·구독 등록·브라우저 권한 요청·실제 알림 발송은 없음.": {
+    "en": "Only settings are saved on this device. No contact collection, subscription, permission request or actual notification delivery.",
+    "ja": "設定のみをこの端末に保存します。連絡先の収集・購読登録・権限要求・実際の通知送信は行いません。",
+    "ko": "설정만 현재 기기에 저장함. 연락처 수집·구독 등록·브라우저 권한 요청·실제 알림 발송은 없음."
+  },
+  "실제 알림 처리 방식": {
+    "en": "How would real alerts work?",
+    "ja": "実際の通知はどう動く？",
+    "ko": "실제 알림 처리 방식"
+  },
+  "확정 체인의 RPC 또는 인덱서에서 소각 이벤트를 수집함.": {
+    "en": "Collect burn events from the confirmed chain via RPC or an indexer.",
+    "ja": "確定したチェーンのRPCまたはインデクサーからバーンイベントを収集。",
+    "ko": "확정 체인의 RPC 또는 인덱서에서 소각 이벤트를 수집함."
+  },
+  "거래 성공·컨트랙트·이벤트·블록 최종성을 검증함.": {
+    "en": "Verify transaction success, contract, event and block finality.",
+    "ja": "取引成功・コントラクト・イベント・ブロックのファイナリティを検証。",
+    "ko": "거래 성공·컨트랙트·이벤트·블록 최종성을 검증함."
+  },
+  "선택한 가격 소스와 정확한 직전 7일 구간으로 TWAP을 계산함.": {
+    "en": "Calculate TWAP from the selected source over the exact preceding 7-day window.",
+    "ja": "選択した価格ソースと正確な直前7日間の区間からTWAPを計算。",
+    "ko": "선택한 가격 소스와 정확한 직전 7일 구간으로 TWAP을 계산함."
+  },
+  "검증된 소각 수량과 가격 근거를 스냅샷으로 저장함.": {
+    "en": "Store verified burn amounts and price evidence as snapshots.",
+    "ja": "検証済みバーン数量と価格の根拠をスナップショットに保存。",
+    "ko": "검증된 소각 수량과 가격 근거를 스냅샷으로 저장함."
+  },
+  "새 소각만 중복 제거 후 채널별로 발송함. 실패 시 재시도함.": {
+    "en": "Deduplicate new burns and deliver per channel; retry failures.",
+    "ja": "新しいバーンの重複を除き、チャネル別に送信。失敗時は再試行。",
+    "ko": "새 소각만 중복 제거 후 채널별로 발송함. 실패 시 재시도함."
+  },
+  "예정된 요일만으로 완료를 추정하여 발송하지 않음. 가격 조회 실패·체인 재구성·처리된 거래는 검증 전 발송을 차단함.": {
+    "en": "A scheduled day alone never implies completion. Failed price lookups, chain reorganizations and previously processed transactions block delivery until verified.",
+    "ja": "予定の曜日だけで完了と判断して送信しません。価格取得失敗・チェーン再編・処理済み取引は、検証前の送信を防ぎます。",
+    "ko": "예정된 요일만으로 완료를 추정하여 발송하지 않음. 가격 조회 실패·체인 재구성·처리된 거래는 검증 전 발송을 차단함."
+  },
+  "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함.": {
+    "en": "No real transactions, dates or hashes yet. Open a row to inspect the calculation.",
+    "ja": "実際の取引・日時・ハッシュはまだありません。各行から計算の根拠を確認できます。",
+    "ko": "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함."
+  },
+  "조건에 맞는 예시 내역이 없음.": {
+    "en": "No sample records match these filters.",
+    "ja": "条件に一致するサンプルはありません。",
+    "ko": "조건에 맞는 예시 내역이 없음."
+  },
+  "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산함. 실제 소각량은 확정 이벤트에서 조회하며, USD 환산액과 계산 규칙은 별도로 검증 예정임.": {
+    "en": "Each completed sample is $67,307.69 divided by its TWAP. Real burn amounts will come from confirmed events, with USD values and calculation rules verified separately.",
+    "ja": "各完了サンプルは67,307.69米ドル÷該当TWAPで計算しています。実際のバーン数量は確定イベントから取得し、米ドル換算額と計算ルールは別途検証します。",
+    "ko": "각 완료 예시는 $67,307.69 ÷ 해당 TWAP으로 계산함. 실제 소각량은 확정 이벤트에서 조회하며, USD 환산액과 계산 규칙은 별도로 검증 예정임."
+  },
+  "커뮤니티 UI 검토용 프리뷰이며 공식 온체인 현황이 아님.": {
+    "en": "This is a community UI preview, not an official on-chain status page.",
+    "ja": "このプレビューはコミュニティのUI確認用であり、公式オンチェーン状況ではありません。",
+    "ko": "커뮤니티 UI 검토용 프리뷰이며 공식 온체인 현황이 아님."
+  },
+  "제목과 설명을 직접 수정 가능함. 저장한 문구는 이 브라우저의 현재 언어에만 적용됨. 공통 사이트나 다른 기기에는 반영되지 않음.": {
+    "en": "Edit titles and descriptions. Saved text applies only to the current language in this browser, not to the shared site or other devices.",
+    "ja": "見出しや説明を編集できます。保存した文言は、このブラウザの現在の言語にのみ適用されます。共通サイトや他の端末には反映されません。",
+    "ko": "제목과 설명을 직접 수정 가능함. 저장한 문구는 이 브라우저의 현재 언어에만 적용됨. 공통 사이트나 다른 기기에는 반영되지 않음."
+  },
+  "소각 수치·계산 규칙·주소 및 예시/임시 안내는 유지됨.": {
+    "en": "Burn figures, calculation rules, addresses and sample/temporary notices remain unchanged.",
+    "ja": "バーン数値・計算ルール・アドレス・サンプル／仮表示の案内は変更されません。",
+    "ko": "소각 수치·계산 규칙·주소 및 예시/임시 안내는 유지됨."
+  },
+  "계산기와 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님.": {
+    "en": "Enable JavaScript to use the calculator and filters. This site uses sample data, not real on-chain information.",
+    "ja": "計算機とフィルターを使用するにはJavaScriptを有効にしてください。このサイトはサンプルデータであり、実際のオンチェーン情報ではありません。",
+    "ko": "계산기와 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님."
+  },
+  "임시 ORBS 스테이킹 주소를 복사했음. 실제 소각 주소가 아님.": {
+    "en": "Temporary ORBS staking address copied. This is not the burn address.",
+    "ja": "仮のORBSステーキングアドレスをコピーしました。バーンアドレスではありません。",
+    "ko": "임시 ORBS 스테이킹 주소를 복사했음. 실제 소각 주소가 아님."
+  },
+  "자동 복사를 사용할 수 없음. 위 주소 선택 후 직접 복사 필요함.": {
+    "en": "Automatic copy is unavailable. Select and copy the address above.",
+    "ja": "自動コピーを利用できません。上のアドレスを選択してコピーしてください。",
+    "ko": "자동 복사를 사용할 수 없음. 위 주소 선택 후 직접 복사 필요함."
+  },
+  "$0.000001 이상 $1,000 이하의 유효한 가격 입력이 필요함. 0 또는 빈 값은 계산 불가함.": {
+    "en": "Enter a valid price between $0.000001 and $1,000. Zero or empty values cannot be calculated.",
+    "ja": "0.000001～1,000米ドルの有効な価格を入力してください。0や空欄では計算できません。",
+    "ko": "$0.000001 이상 $1,000 이하의 유효한 가격 입력이 필요함. 0 또는 빈 값은 계산 불가함."
+  },
+  "전체 목표의 {0}%에 해당함. 누적 예시에는 합산하지 않음.": {
+    "en": "Equals {0}% of the total target. Not added to the sample cumulative total.",
+    "ja": "総目標の{0}%に相当します。サンプル累計には加算しません。",
+    "ko": "전체 목표의 {0}%에 해당함. 누적 예시에는 합산하지 않음."
+  },
+  "가격 입력 시 계산 결과가 표시됨.": {
+    "en": "Enter a price to see the result.",
+    "ja": "価格を入力すると計算結果が表示されます。",
+    "ko": "가격 입력 시 계산 결과가 표시됨."
+  },
+  " 해당 계산값은 예시 잔여량을 초과함. 실제 최종 소각의 잔량 제한 규칙은 미확정임.": {
+    "en": " This exceeds the sample remaining balance. The final burn balance-cap rule is not yet confirmed.",
+    "ja": " この計算値はサンプル残高を超えています。最終バーンの残高上限ルールは未確定です。",
+    "ko": " 해당 계산값은 예시 잔여량을 초과함. 실제 최종 소각의 잔량 제한 규칙은 미확정임."
+  },
+  "가상 주차이며 실제 날짜 또는 거래를 의미하지 않음.": {
+    "en": "This is an illustrative week, not an actual date or transaction.",
+    "ja": "仮想の週であり、実際の日付や取引を示すものではありません。",
+    "ko": "가상 주차이며 실제 날짜 또는 거래를 의미하지 않음."
+  },
+  "표시값은 소수점 2자리로 반올림함. 누적 계산은 반올림 전 값을 사용함. 실제 연동 시 이벤트 수량과 공식 정밀도를 기준으로 검증함.": {
+    "en": "Display values are rounded to 2 decimals; cumulative calculations use unrounded values. Live integration will verify event amounts and official precision.",
+    "ja": "表示値は小数点以下2桁に丸めています。累計計算には丸め前の値を使用します。実連携時はイベント数量と公式精度を検証します。",
+    "ko": "표시값은 소수점 2자리로 반올림함. 누적 계산은 반올림 전 값을 사용함. 실제 연동 시 이벤트 수량과 공식 정밀도를 기준으로 검증함."
+  },
+  "이 브라우저에 저장된 체험용 선택을 불러왔음. 실제 구독이 아님.": {
+    "en": "Loaded demo choices from this browser. This is not a real subscription.",
+    "ja": "このブラウザの体験用選択を読み込みました。実際の購読ではありません。",
+    "ko": "이 브라우저에 저장된 체험용 선택을 불러왔음. 실제 구독이 아님."
+  },
+  "저장된 선택을 불러오지 못했음. 기본값으로 체험 가능함.": {
+    "en": "Could not load saved choices. You can use the defaults.",
+    "ja": "保存した選択を読み込めませんでした。初期設定で体験できます。",
+    "ko": "저장된 선택을 불러오지 못했음. 기본값으로 체험 가능함."
+  },
+  "선택을 변경했음. 저장 시 이 브라우저에만 적용됨.": {
+    "en": "Choices changed. Save to remember them in this browser only.",
+    "ja": "選択を変更しました。保存すると、このブラウザにのみ記憶します。",
+    "ko": "선택을 변경했음. 저장 시 이 브라우저에만 적용됨."
+  },
+  "체험용 선택을 이 브라우저에 저장했음. 실제 알림 구독·발송은 없음.": {
+    "en": "Demo choices saved in this browser. No real subscription or notification delivery.",
+    "ja": "体験用選択をこのブラウザに保存しました。実際の購読・通知送信はありません。",
+    "ko": "체험용 선택을 이 브라우저에 저장했음. 실제 알림 구독·발송은 없음."
+  },
+  "수신 채널 없음으로 저장했음. 실제 구독은 없음.": {
+    "en": "Saved with no channels selected. No real subscription.",
+    "ja": "受信チャネルなしで保存しました。実際の購読はありません。",
+    "ko": "수신 채널 없음으로 저장했음. 실제 구독은 없음."
+  },
+  "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 현재 화면에서만 체험 가능함.": {
+    "en": "Browser storage is unavailable. Choices are not saved and apply only to this screen.",
+    "ja": "ブラウザの保存領域を利用できません。保存されず、この画面のみで体験できます。",
+    "ko": "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 현재 화면에서만 체험 가능함."
+  },
+  "저장된 선택을 삭제했음. 기본 예시(Telegram)로 복원했음.": {
+    "en": "Saved choices cleared. Restored the default Telegram example.",
+    "ja": "保存した選択を削除し、初期サンプルのTelegramに戻しました。",
+    "ko": "저장된 선택을 삭제했음. 기본 예시(Telegram)로 복원했음."
+  },
+  "저장소 접근 불가로 삭제 여부를 확인하지 못했음.": {
+    "en": "Storage is inaccessible; deletion could not be confirmed.",
+    "ja": "保存領域にアクセスできず、削除を確認できませんでした。",
+    "ko": "저장소 접근 불가로 삭제 여부를 확인하지 못했음."
+  },
+  "실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공함. 현재 실제 거래가 없어 링크를 생성하지 않았음.": {
+    "en": "The live service would include a confirmed transaction link, burn time and price window. No transaction exists here, so no link is fabricated.",
+    "ja": "実サービスでは確定取引リンク・バーン時刻・価格区間を提供します。ここには実際の取引がないため、リンクは作成していません。",
+    "ko": "실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공함. 현재 실제 거래가 없어 링크를 생성하지 않았음."
+  },
+  "각 문구는 공백이 아닌 1~2,000자 입력이 필요함.": {
+    "en": "Enter 1–2,000 nonblank characters for each field.",
+    "ja": "各項目に空白以外の1～2,000文字を入力してください。",
+    "ko": "각 문구는 공백이 아닌 1~2,000자 입력이 필요함."
+  },
+  "기본 문구로 채웠음. 저장하고 적용 시 반영됨.": {
+    "en": "Defaults filled in. Click Save and apply to use them.",
+    "ja": "初期文言を入力しました。「保存して適用」で反映されます。",
+    "ko": "기본 문구로 채웠음. 저장하고 적용 시 반영됨."
+  },
+  "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 문구 파일 받기로 내용 보관 가능함.": {
+    "en": "Browser storage is unavailable, so text was not saved. Download the text file to keep a copy.",
+    "ja": "ブラウザの保存領域を利用できず、保存できませんでした。文言ファイルを保存して保管できます。",
+    "ko": "브라우저 저장소를 사용할 수 없어 저장하지 못했음. 문구 파일 받기로 내용 보관 가능함."
+  },
+  "문구 파일을 내려받았음. 공통 사이트 반영 시 해당 파일 전달이 필요함.": {
+    "en": "Text file downloaded. Share this file to update the common site.",
+    "ja": "文言ファイルを保存しました。共通サイトに反映するには、このファイルをお送りください。",
+    "ko": "문구 파일을 내려받았음. 공통 사이트 반영 시 해당 파일 전달이 필요함."
   }
 };
