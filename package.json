@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/model.test.js",
-    "check": "node --check site/app.js && node --check site/model.js && node --check site/copy-editor.js && node --check site/i18n.js && node --check site/translations.js"
+    "test": "node --test tests/*.test.js",
+    "check": "node --check site/app.js && node --check site/model.js && node --check site/copy-editor.js && node --check site/i18n.js && node --check site/translations.js && node --check site/market-model.js && node --check site/market-price.js"
   }
 }

@@ -1,5 +1,5 @@
-import {t,tr as msg,initLanguage} from './i18n.js?v=5';
-import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels} from './model.js?v=3';
+import {t,tr as msg,initLanguage} from './i18n.js?v=6';
+import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels,transactionLink,shortHash} from './model.js?v=6';
 initLanguage();
 const $ = id => document.getElementById(id);
 const fmt = (v,d=2) => v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -42,10 +42,20 @@ function detail(week){
 }
 function renderTable(){
  const rows=filterRecords($('status-filter').value,$('week-filter').value,$('sort-filter').value);$('history-body').replaceChildren();
- for(const r of rows){const tr=document.createElement('tr');
- const values=[[t('주차'),msg`예시 ${String(r.week).padStart(2,'0')}주차`],[t('직전 7일 TWAP'),r.twap===null?t('미정'):'$'+fmt(r.twap,6)],[t('소각량 / ORBS'),r.amount===null?'—':fmt(r.amount)],[t('상태'),r.status==='complete'?t('완료 예시'):t('대기 예시')]];
- for(const [label,value] of values){const td=document.createElement('td');td.dataset.label=label;addText(label===t('소각량 / ORBS')?'strong':'span',value,td,label===t('상태')?'state '+r.status:undefined);tr.append(td);}
- const td=document.createElement('td');td.dataset.label=t('계산 근거');const button=addText('button',t('상세 보기 ↗'),td);button.setAttribute('aria-label',msg`예시 ${r.week}주차 상세 보기`);button.addEventListener('click',()=>detail(r.week));tr.append(td);$('history-body').append(tr);}
+ for(const r of rows){const row=document.createElement('tr');
+ const dateCell=document.createElement('td');dateCell.dataset.label=t('날짜 / 회차');
+ const dateLabel=r.date.slice(2).replaceAll('-','.');
+ const button=addText('button',msg`${dateLabel} (${r.week}회차)`,dateCell,'history-date');
+ button.setAttribute('aria-label',msg`예시 ${r.week}주차 상세 보기`);button.addEventListener('click',()=>detail(r.week));
+ if(r.status==='pending')addText('span',t('대기 예시'),dateCell,'state pending');row.append(dateCell);
+ const priceCell=document.createElement('td');priceCell.dataset.label=t('7일 기준가격');
+ addText('span',r.twap===null?'—':'$'+fmt(r.twap,6),priceCell);row.append(priceCell);
+ const amountCell=document.createElement('td');amountCell.dataset.label=t('소각 수량');
+ addText('strong',r.amount===null?'—':fmt(r.amount)+' ORBS',amountCell);row.append(amountCell);
+ const txCell=document.createElement('td');txCell.dataset.label=t('트랜잭션');const url=transactionLink(r.transactionHash);
+ if(url){const link=addText('a',shortHash(r.transactionHash)+' ↗',txCell,'transaction-link');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.title=r.transactionHash;link.setAttribute('aria-label',msg`Etherscan에서 트랜잭션 ${r.transactionHash} 보기`);}
+ else{const placeholder=addText('span',t('미연동'),txCell,'transaction-pending');placeholder.title=t('실제 거래 해시 확보 후 Etherscan 링크 제공 예정임.');}
+ row.append(txCell);$('history-body').append(row);}
  $('row-count').textContent=msg`예시 ${rows.length}건 / 전체 ${records.length}건`;$('empty').hidden=rows.length!==0;
 }
 for(const id of ['status-filter','week-filter','sort-filter'])$(id).addEventListener('change',renderTable);
@@ -61,5 +71,8 @@ $('alert-form').addEventListener('submit',e=>{e.preventDefault();try{localStorag
 $('clear-prefs').addEventListener('click',()=>{try{localStorage.removeItem(KEY);inputs.forEach(i=>i.checked=i.value==='telegram');$('prefs-status').textContent=t('저장된 선택을 지웠어. 기본 예시(Telegram)로 돌아왔어.');}catch{$('prefs-status').textContent=t('저장소에 접근할 수 없어 삭제 여부를 확인하지 못했어.');}});
 $('alert-preview').addEventListener('click',()=>{const body=openDialog(t('소각 알림 메시지 예시'));const names={telegram:'Telegram',email:t('이메일'),push:t('웹 푸시')};const selected=channels();addText('p',msg`선택한 채널: ${selected.length?selected.map(c=>names[c]).join(', '):t('없음')}`,body);addText('p',t('[체험용 예시 · 실제 발송 없음]'),body,'dialog-note');const r=records[5];addText('p',msg`예시 6주차 소각 완료: ${fmt(r.amount)} ORBS`,body);addText('p',msg`적용 TWAP: $${fmt(r.twap,6)} / ORBS · 기준 금액: $${fmt(WEEKLY_USD)}`,body);addText('p',msg`예시 누적: ${fmt(cumulative)} / ${fmt(TARGET,0)} ORBS (${fmt(progressPercent)}%)`,body);addText('p',t('실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.'),body);});
 
-import {initCopyEditor} from './copy-editor.js?v=5';
+import {initCopyEditor} from './copy-editor.js?v=6';
 initCopyEditor();
+
+import {initMarketPrice} from './market-price.js?v=6';
+initMarketPrice();

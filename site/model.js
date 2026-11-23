@@ -10,9 +10,9 @@ const samplePrices = [0.018, 0.021, 0.0195, 0.024, 0.022, 0.02];
 const sampleScale = (TARGET * 0.32) / samplePrices.reduce((sum, price) => sum + calculateBurn(price), 0);
 export const records = samplePrices.map((price, i) => {
   const twap = price / sampleScale;
-  return {week:i+1, twap, amount:calculateBurn(twap), status:'complete'};
+  return {week:i+1, date:new Date(Date.UTC(2026,10,13+i*7)).toISOString().slice(0,10), transactionHash:null, twap, amount:calculateBurn(twap), status:'complete'};
 });
-records.push({week:7,twap:null,amount:null,status:'pending'});
+records.push({week:7,date:'2026-12-25',transactionHash:null,twap:null,amount:null,status:'pending'});
 export const cumulative = records.filter(r=>r.status==='complete').reduce((sum,r)=>sum+r.amount,0);
 export const progressPercent = cumulative / TARGET * 100;
 export function filterRecords(status='all', period='all', order='desc') {
@@ -21,3 +21,9 @@ export function filterRecords(status='all', period='all', order='desc') {
 export function sanitizeChannels(value) {
   return Array.isArray(value) ? [...new Set(value.filter(v=>['telegram','email','push'].includes(v)))] : ['telegram'];
 }
+
+// Only correctly formed full transaction hashes can form explorer URLs; samples stay null.
+export function transactionLink(hash) {
+  return typeof hash === 'string' && /^0x[0-9a-fA-F]{64}$/.test(hash) ? `https://etherscan.io/tx/${hash}` : null;
+}
+export function shortHash(hash) { return transactionLink(hash) ? `${hash.slice(0,8)}…${hash.slice(-6)}` : '—'; }

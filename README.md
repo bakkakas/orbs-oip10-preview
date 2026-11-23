@@ -1,11 +1,11 @@
 # OIP-10 interactive preview
 
-Focused Korean community UI preview. **No live chain integration, real subscriptions, contact collection, wallet connection, or notification delivery.** Only public illustrative data is deployed from `site/`.
+Focused Korean community UI preview. **No live chain integration, real subscriptions, contact collection, wallet connection, or notification delivery.** Burn records remain illustrative; the header independently fetches a public live ORBS/USD market quote.
 
 ## Scope
 - Exact target: **507,540,603 ORBS**.
 - Weekly formula: **USD 67,307.69 / prior-period ORBS/USD 7-day TWAP**.
-- Six completed illustrative weeks and one pending example; no invented dates, addresses, hashes, chains or authoritative market prices.
+- Six completed illustrative rounds and one pending example, with explicitly illustrative weekly dates starting 2026-11-13. No transaction hashes are fabricated.
 - Numeric TWAP input, slider, presets, invalid-value handling and over-remaining-balance warning. Simulator never modifies historical progress.
 - Responsive weekly table with state/week filters, ordering, empty state and keyboard-accessible detail dialog.
 - Telegram/email/web-push preference prototype stored only in browser localStorage; preview message only.
@@ -20,7 +20,7 @@ python3 -m http.server 8899 --bind 127.0.0.1 --directory site
 Optional browser QA: `node tests/browser.cjs http://127.0.0.1:8899/` with Playwright installed. `PLAYWRIGHT_MODULE` and `CHROMIUM_PATH` may point to an existing local installation. Exercises 1440, 390 and 320px viewports and writes ignored screenshots to `artifacts/`. Tests also run against the deployed HTTPS URL.
 
 ## Deployment
-GitHub Pages Actions deploys only `site/` on main, after model tests and JS syntax checks. Query-string asset versions are updated through HTML → app → model when assets change. No public API keys or backend endpoints.
+GitHub Pages Actions deploys only `site/` on main, after model tests and JS syntax checks. Query-string asset versions are updated through HTML → app → model when assets change. No public API keys or application backend; the browser reads the public CoinGecko simple-price endpoint.
 
 ## Weekly alerts: recommended production architecture (NOT implemented)
 1. A scheduled server worker reads indexed burn events or the confirmed chain's RPC (`eth_getLogs` only if EVM). Backfill from a configured start block with a bounded overlap; keep a durable cursor and back off on rate limits.
@@ -37,10 +37,19 @@ GitHub Pages Actions deploys only `site/` on main, after model tests and JS synt
 - First burn date/weekly cutoff, finality requirements, amount rounding and last-balance/cap behavior; confirm deposit amount against deployment.
 - Preferred initial channel, recipient opt-in/linking flow, backend hosting/DB and chosen messaging provider credentials stored server-side (never in the public site).
 
-No live data or alert delivery is claimed. Preferences saved in this prototype are not production consent/subscriptions.
+No live on-chain burn data or alert delivery is claimed. Preferences saved in this prototype are not production consent/subscriptions.
 
 ## Preview copy editor (2026-11-23)
 
 Use **문구 편집** to change titles and descriptions, then **저장하고 적용**. Plain text is stored only in the current browser (localStorage); this does not publish changes to other visitors/devices. Cancel/Escape discards unsaved edits. **기본 문구로 채우기** restores draft defaults; save to apply. **문구 파일 받기** exports the current draft as JSON for handoff. Financial values and preview/temporary warnings remain outside the editor.
 
 The contract display and Etherscan link temporarily use the user-supplied ORBS staking contract `0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3`. It is explicitly NOT the burn contract and no on-chain reads are made. The filled progress bar has a subtle shimmer, disabled by prefers-reduced-motion.
+
+## Header market price and weekly history
+
+- Header: CoinGecko `orbs` USD spot price, 24-hour percentage change and provider update time. Updates every 60 seconds while visible; 10-second request timeout. Missing change is hidden, never treated as 0%.
+- Quotes older than five minutes, invalid values, network/HTTP failures and stale resumed tabs are not displayed as current. Unavailable prices display a dash and a translated status. The public free endpoint may rate-limit; there is no fabricated fallback.
+- Spot price does not feed the 7-day reference price, burn history or 32% illustrative progress.
+- History has Date / Round, 7-day reference price (USD/ORBS), Amount burned (ORBS), and Transaction columns. Select a date for details; scroll the table horizontally on mobile.
+- Actual hashes are currently unknown, so the transaction cells say Not connected. A supplied valid 32-byte EVM hash renders as a shortened hash with the exact Etherscan transaction link. The current deployment has no such hashes.
+- `tests/history-price.cjs` checks live quotes and table layout at three widths, then separately mocks missing/negative change, stale/invalid/error responses and refresh failure. It tests a synthetic transaction hash only in an isolated browser; never deployed as data.

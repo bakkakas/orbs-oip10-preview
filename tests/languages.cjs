@@ -8,7 +8,7 @@ let checks=0;function check(value,message){assert.ok(value,message);checks++;con
  const errors=[];fs.mkdirSync('artifacts',{recursive:true});
  try {
  for(const width of [1440,390,320]){
- const context=await browser.newContext({viewport:{width,height:900}});const page=await context.newPage();page.setDefaultTimeout(7000);
+ const context=await browser.newContext({viewport:{width,height:900}});await context.route('https://api.coingecko.com/api/v3/simple/price?**',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({orbs:{usd:.006,usd_24h_change:1.25,last_updated_at:Math.floor(Date.now()/1000)}})}));const page=await context.newPage();page.setDefaultTimeout(7000);
  page.on('pageerror',e=>(errors.push(e.message),console.error(e.message)));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.text());});
  await page.goto(base,{waitUntil:'networkidle'});
  for(const lang of ['ko','en','ja']){
