@@ -1,5 +1,5 @@
-import {t,tr as msg,initLanguage} from './i18n.js?v=6';
-import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels,transactionLink,shortHash} from './model.js?v=6';
+import {t,tr as msg,initLanguage} from './i18n.js?v=7';
+import {TARGET,WEEKLY_USD,records,cumulative,progressPercent,filterRecords,sanitizeChannels,transactionLink,shortHash,completedRecords,latestCompleted,exampleTotalSupply,PLANNED_ROUNDS,TEMPORARY_ADDRESS,TEMPORARY_ADDRESS_URL} from './model.js?v=7';
 initLanguage();
 const $ = id => document.getElementById(id);
 const fmt = (v,d=2) => v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -12,24 +12,10 @@ $('copy-contract').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText($('contract-address').textContent);$('contract-message').textContent=t('임시 ORBS 스테이킹 주소를 복사했어. 실제 소각 주소가 아니야.');}
  catch{$('contract-message').textContent=t('자동 복사를 사용할 수 없어. 위 주소를 선택해서 복사해 줘.');}
 });
-function simulate(){
-  const raw=$('twap').value.trim();
-  const price=raw===''?NaN:Number(raw);
-  const amount=calculateBurn(price);
-  const valid=amount!==null;
-  $('twap').setAttribute('aria-invalid',String(!valid));
-  $('twap-error').textContent=valid?'':t('$0.000001 이상 $1,000 이하의 유효한 가격을 입력해 줘. 0이나 빈 값으로는 계산할 수 없어.');
-  $('sim-amount').textContent=valid?fmt(amount):'—';
-  $('sim-share').textContent=valid?msg`전체 목표의 ${fmt(amount/TARGET*100,3)}%에 해당해. 누적 예시에는 합산하지 않아.`:t('가격을 입력하면 계산 결과가 표시돼.');
-  if(valid && amount>TARGET-cumulative) $('sim-share').textContent+=t(' 이 계산값은 예시 잔여량을 초과해. 실제 마지막 소각의 잔량 제한 규칙은 미확정이야.');
-  if(valid) $('twap-range').value=String(Math.max(.005,Math.min(.1,price)));
-  $('twap-range').setAttribute('aria-valuetext',msg`슬라이더 범위의 가격 ${$('twap-range').value} USD / ORBS`);
-}
-$('twap').addEventListener('input',simulate);
-$('twap-range').addEventListener('input',()=>{$('twap').value=Number($('twap-range').value).toFixed(6);simulate();});
-for(const b of document.querySelectorAll('[data-price]'))b.addEventListener('click',()=>{$('twap').value=Number(b.dataset.price).toFixed(6);simulate();});
-$('reset-sim').addEventListener('click',()=>{$('twap').value='0.020000';simulate();});
-simulate();
+$('total-supply').textContent=fmt(exampleTotalSupply);
+$('latest-reference-price').textContent=latestCompleted?'$'+fmt(latestCompleted.twap,6):'—';
+$('latest-round-label').textContent=latestCompleted?msg`최근 완료: ${latestCompleted.week}회차`:t('완료된 회차 없음');
+$('completed-rounds').textContent=`${completedRecords.length} / ${PLANNED_ROUNDS}`;
 function addText(tag,text,parent,cls){const el=document.createElement(tag);el.textContent=text;if(cls)el.className=cls;parent.append(el);return el;}
 function openDialog(title){$('dialog-title').textContent=title;$('dialog-body').replaceChildren();$('detail-dialog').showModal();return $('dialog-body');}
 function detail(week){
@@ -41,38 +27,38 @@ function detail(week){
   addText('p',t('표시값은 소수점 2자리 반올림. 누적 계산은 반올림 전 값을 사용해. 실제 연동에서는 이벤트 수량과 공식 정밀도를 기준으로 검증해.'),body,'dialog-note');
 }
 function renderTable(){
- const rows=filterRecords($('status-filter').value,$('week-filter').value,$('sort-filter').value);$('history-body').replaceChildren();
+ const rows=filterRecords('complete',$('week-filter').value,$('sort-filter').value);$('history-body').replaceChildren();
  for(const r of rows){const row=document.createElement('tr');
  const dateCell=document.createElement('td');dateCell.dataset.label=t('날짜 / 회차');
  const dateLabel=r.date.slice(2).replaceAll('-','.');
  const button=addText('button',msg`${dateLabel} (${r.week}회차)`,dateCell,'history-date');
  button.setAttribute('aria-label',msg`예시 ${r.week}주차 상세 보기`);button.addEventListener('click',()=>detail(r.week));
- if(r.status==='pending')addText('span',t('대기 예시'),dateCell,'state pending');row.append(dateCell);
+ row.append(dateCell);
  const priceCell=document.createElement('td');priceCell.dataset.label=t('7일 기준가격');
  addText('span',r.twap===null?'—':'$'+fmt(r.twap,6),priceCell);row.append(priceCell);
  const amountCell=document.createElement('td');amountCell.dataset.label=t('소각 수량');
  addText('strong',r.amount===null?'—':fmt(r.amount)+' ORBS',amountCell);row.append(amountCell);
  const txCell=document.createElement('td');txCell.dataset.label=t('트랜잭션');const url=transactionLink(r.transactionHash);
  if(url){const link=addText('a',shortHash(r.transactionHash)+' ↗',txCell,'transaction-link');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.title=r.transactionHash;link.setAttribute('aria-label',msg`Etherscan에서 트랜잭션 ${r.transactionHash} 보기`);}
- else{const placeholder=addText('span',t('미연동'),txCell,'transaction-pending');placeholder.title=t('실제 거래 해시 확보 후 Etherscan 링크 제공 예정임.');}
+ else{const link=addText('a',TEMPORARY_ADDRESS.slice(0,8)+'…'+TEMPORARY_ADDRESS.slice(-6)+' ↗',txCell,'transaction-link temporary-transaction');link.href=TEMPORARY_ADDRESS_URL;link.target='_blank';link.rel='noopener noreferrer';link.title=TEMPORARY_ADDRESS+' · '+t('임시 스테이킹 주소 · 실제 거래 아님');link.setAttribute('aria-label',t('Etherscan에서 임시 스테이킹 주소 보기'));addText('small',t('임시 주소'),txCell,'temporary-label');}
  row.append(txCell);$('history-body').append(row);}
- $('row-count').textContent=msg`예시 ${rows.length}건 / 전체 ${records.length}건`;$('empty').hidden=rows.length!==0;
+ $('row-count').textContent=msg`예시 ${rows.length}건 / 전체 ${completedRecords.length}건`;$('empty').hidden=rows.length!==0;
 }
-for(const id of ['status-filter','week-filter','sort-filter'])$(id).addEventListener('change',renderTable);
+for(const id of ['week-filter','sort-filter'])$(id).addEventListener('change',renderTable);
 renderTable();
 $('close-dialog').addEventListener('click',()=>$('detail-dialog').close());
 $('detail-dialog').addEventListener('click',e=>{if(e.target===$('detail-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
-const KEY='orbs-oip10-preview-channels-v1';
+const KEY='orbs-oip10-preview-telegram-v2';
 const inputs=[...document.querySelectorAll('input[name=channel]')];
 try{const raw=localStorage.getItem(KEY);if(raw!==null){const channels=sanitizeChannels(JSON.parse(raw));inputs.forEach(i=>i.checked=channels.includes(i.value));$('prefs-status').textContent=t('이 브라우저에 저장된 체험용 선택을 불러왔어. 실제 구독은 아니야.');}}catch{$('prefs-status').textContent=t('저장된 선택을 불러오지 못했어. 기본값으로 체험할 수 있어.');}
 function channels(){return inputs.filter(i=>i.checked).map(i=>i.value);}
 inputs.forEach(i=>i.addEventListener('change',()=>{$('prefs-status').textContent=t('선택을 변경했어. 저장 버튼을 누르면 이 브라우저에만 기억해.');}));
 $('alert-form').addEventListener('submit',e=>{e.preventDefault();try{localStorage.setItem(KEY,JSON.stringify(channels()));$('prefs-status').textContent=channels().length?t('체험용 선택을 이 브라우저에 저장했어. 실제 알림 구독·발송은 없어.'):t('수신 채널 없음으로 저장했어. 실제 구독은 없어.');}catch{$('prefs-status').textContent=t('브라우저 저장소를 사용할 수 없어 저장하지 못했어. 이 화면에서만 체험할 수 있어.');}});
 $('clear-prefs').addEventListener('click',()=>{try{localStorage.removeItem(KEY);inputs.forEach(i=>i.checked=i.value==='telegram');$('prefs-status').textContent=t('저장된 선택을 지웠어. 기본 예시(Telegram)로 돌아왔어.');}catch{$('prefs-status').textContent=t('저장소에 접근할 수 없어 삭제 여부를 확인하지 못했어.');}});
-$('alert-preview').addEventListener('click',()=>{const body=openDialog(t('소각 알림 메시지 예시'));const names={telegram:'Telegram',email:t('이메일'),push:t('웹 푸시')};const selected=channels();addText('p',msg`선택한 채널: ${selected.length?selected.map(c=>names[c]).join(', '):t('없음')}`,body);addText('p',t('[체험용 예시 · 실제 발송 없음]'),body,'dialog-note');const r=records[5];addText('p',msg`예시 6주차 소각 완료: ${fmt(r.amount)} ORBS`,body);addText('p',msg`적용 TWAP: $${fmt(r.twap,6)} / ORBS · 기준 금액: $${fmt(WEEKLY_USD)}`,body);addText('p',msg`예시 누적: ${fmt(cumulative)} / ${fmt(TARGET,0)} ORBS (${fmt(progressPercent)}%)`,body);addText('p',t('실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.'),body);});
+$('alert-preview').addEventListener('click',()=>{const body=openDialog(t('소각 알림 메시지 예시'));const names={telegram:'Telegram'};const selected=channels();addText('p',msg`선택한 채널: ${selected.length?selected.map(c=>names[c]).join(', '):t('없음')}`,body);addText('p',t('[체험용 예시 · 실제 발송 없음]'),body,'dialog-note');const r=records[5];addText('p',msg`예시 6주차 소각 완료: ${fmt(r.amount)} ORBS`,body);addText('p',msg`적용 TWAP: $${fmt(r.twap,6)} / ORBS · 기준 금액: $${fmt(WEEKLY_USD)}`,body);addText('p',msg`예시 누적: ${fmt(cumulative)} / ${fmt(TARGET,0)} ORBS (${fmt(progressPercent)}%)`,body);addText('p',t('실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.'),body);});
 
-import {initCopyEditor} from './copy-editor.js?v=6';
+import {initCopyEditor} from './copy-editor.js?v=7';
 initCopyEditor();
 
-import {initMarketPrice} from './market-price.js?v=6';
+import {initMarketPrice} from './market-price.js?v=7';
 initMarketPrice();

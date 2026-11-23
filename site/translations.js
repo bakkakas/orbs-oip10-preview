@@ -50,9 +50,9 @@ export const translations = {
     "ko": "매주 동일한 달러 기준액을 적용하며 가격에 따라 ORBS 소각량이 달라짐."
   },
   "진행률을 살펴보고 7일 TWAP으로 직접 계산해 봐.": {
-    "en": "Explore the progress and calculate burns using the 7-day TWAP.",
-    "ja": "進捗を確認し、7日間TWAPでバーン数量を計算できます。",
-    "ko": "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함."
+    "ko": "소각 진행률과 회차별 7일 기준가격 확인 가능함.",
+    "en": "Explore burn progress and the 7-day reference price for each round.",
+    "ja": "バーン進捗と各回の7日間基準価格を確認できます。"
   },
   "온체인 연동 대기": {
     "en": "On-chain integration pending",
@@ -318,9 +318,9 @@ export const translations = {
     "ja": "履歴の説明"
   },
   "실제 거래·날짜·해시는 아직 없어. 각 행을 열어 계산 근거를 볼 수 있어.": {
-    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
-    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
-    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
+    "ko": "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.",
+    "en": "Completed sample rounds only. Transaction links temporarily point to the ORBS staking address, not actual burn transactions.",
+    "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
   },
   "상태": {
     "en": "Status",
@@ -692,9 +692,9 @@ export const translations = {
     "ko": "매주 동일한 달러 기준액을 적용하며 가격에 따라 ORBS 소각량이 달라짐."
   },
   "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함.": {
-    "en": "Explore the progress and calculate burns using the 7-day TWAP.",
-    "ja": "進捗を確認し、7日間TWAPでバーン数量を計算できます。",
-    "ko": "소각 진행률 확인 및 7일 TWAP 기준 직접 계산 가능함."
+    "ko": "소각 진행률과 회차별 7일 기준가격 확인 가능함.",
+    "en": "Explore burn progress and the 7-day reference price for each round.",
+    "ja": "バーン進捗と各回の7日間基準価格を確認できます。"
   },
   "목표와 계산 규칙은 제공된 기준값임.": {
     "en": "Target and formula use the supplied parameters.",
@@ -792,9 +792,9 @@ export const translations = {
     "ko": "예정된 요일만으로 완료를 추정하여 발송하지 않음. 가격 조회 실패·체인 재구성·처리된 거래는 검증 전 발송을 차단함."
   },
   "실제 거래·날짜·해시는 미연동 상태임. 각 행에서 계산 근거 확인 가능함.": {
-    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
-    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
-    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
+    "ko": "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.",
+    "en": "Completed sample rounds only. Transaction links temporarily point to the ORBS staking address, not actual burn transactions.",
+    "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
   },
   "조건에 맞는 예시 내역이 없음.": {
     "en": "No sample records match these filters.",
@@ -1007,8 +1007,98 @@ export const translations = {
     "ja": "週次バーン履歴 · 横スクロール可能"
   },
   "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.": {
-    "ko": "날짜·가격·수량은 예시임. 날짜 선택 시 계산 근거 확인 가능함. 실제 트랜잭션은 미연동 상태임.",
-    "en": "Dates, prices and amounts are illustrative. Select a date for calculation details. Actual transactions are not connected.",
-    "ja": "日付・価格・数量はサンプルです。日付を選ぶと計算根拠を確認できます。実際の取引は未連携です。"
+    "ko": "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.",
+    "en": "Completed sample rounds only. Transaction links temporarily point to the ORBS staking address, not actual burn transactions.",
+    "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
+  },
+  "소각 요약 지표": {
+    "ko": "소각 요약 지표",
+    "en": "Burn summary metrics",
+    "ja": "バーン概要"
+  },
+  "ORBS 총 공급량": {
+    "ko": "ORBS 총 공급량",
+    "en": "ORBS total supply",
+    "ja": "ORBS総供給量"
+  },
+  "최초 100억 개 − 누적 예시 소각량": {
+    "ko": "최초 100억 개 − 누적 예시 소각량",
+    "en": "Initial 10 billion − cumulative sample burns",
+    "ja": "初期100億枚 − 累積サンプルバーン量"
+  },
+  "실제 온체인 총 공급량이 아닌 계산 예시임.": {
+    "ko": "실제 온체인 총 공급량이 아닌 계산 예시임.",
+    "en": "Calculated example, not the actual on-chain total supply.",
+    "ja": "計算例であり、実際のオンチェーン総供給量ではありません。"
+  },
+  "최근 회차 기준가격": {
+    "ko": "최근 회차 기준가격",
+    "en": "Latest reference price",
+    "ja": "直近回の基準価格"
+  },
+  "최근 완료 회차의 7일 기준가격임. 현재 시장가격과 다름.": {
+    "ko": "최근 완료 회차의 7일 기준가격임. 현재 시장가격과 다름.",
+    "en": "7-day reference price for the latest completed round, not the current market price.",
+    "ja": "直近の完了回の7日間基準価格です。現在の市場価格とは異なります。"
+  },
+  "최근 완료: {0}회차": {
+    "ko": "최근 완료: {0}회차",
+    "en": "Latest completed: Round {0}",
+    "ja": "直近完了：第{0}回"
+  },
+  "완료된 회차 없음": {
+    "ko": "완료된 회차 없음",
+    "en": "No completed rounds",
+    "ja": "完了した回はありません"
+  },
+  "총 소각 횟수": {
+    "ko": "총 소각 횟수",
+    "en": "Burn rounds",
+    "ja": "バーン回数"
+  },
+  "완료 / 전체 회차": {
+    "ko": "완료 / 전체 회차",
+    "en": "Completed / Total rounds",
+    "ja": "完了 / 全体回数"
+  },
+  "총 52회차 기준": {
+    "ko": "총 52회차 기준",
+    "en": "52 rounds in total",
+    "ja": "全52回を想定"
+  },
+  "완료된 예시 내역만 집계함.": {
+    "ko": "완료된 예시 내역만 집계함.",
+    "en": "Completed sample rounds only.",
+    "ja": "完了したサンプル回のみ集計。"
+  },
+  "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.": {
+    "ko": "완료된 예시 회차만 표시함. 트랜잭션 링크는 임시 ORBS 스테이킹 주소이며 실제 소각 거래가 아님.",
+    "en": "Completed sample rounds only. Transaction links temporarily point to the ORBS staking address, not actual burn transactions.",
+    "ja": "完了したサンプル回のみ表示。取引リンクは仮のORBSステーキングアドレスであり、実際のバーン取引ではありません。"
+  },
+  "임시 스테이킹 주소 · 실제 거래 아님": {
+    "ko": "임시 스테이킹 주소 · 실제 거래 아님",
+    "en": "Temporary staking address · not an actual transaction",
+    "ja": "仮のステーキングアドレス・実際の取引ではありません"
+  },
+  "Etherscan에서 임시 스테이킹 주소 보기": {
+    "ko": "Etherscan에서 임시 스테이킹 주소 보기",
+    "en": "View temporary staking address on Etherscan",
+    "ja": "Etherscanで仮のステーキングアドレスを確認"
+  },
+  "임시 주소": {
+    "ko": "임시 주소",
+    "en": "Temporary address",
+    "ja": "仮アドレス"
+  },
+  "소각 진행률과 회차별 7일 기준가격 확인 가능함.": {
+    "ko": "소각 진행률과 회차별 7일 기준가격 확인 가능함.",
+    "en": "Explore burn progress and the 7-day reference price for each round.",
+    "ja": "バーン進捗と各回の7日間基準価格を確認できます。"
+  },
+  "가격·소각 지표 및 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님.": {
+    "ko": "가격·소각 지표 및 필터 사용 시 JavaScript 활성화가 필요함. 예시 데이터 프리뷰이며 실제 온체인 정보가 아님.",
+    "en": "Enable JavaScript for prices, burn metrics and filters. Burn data is illustrative, not live on-chain information.",
+    "ja": "価格・バーン指標・フィルターにはJavaScriptが必要です。バーンデータはサンプルであり、実際のオンチェーン情報ではありません。"
   }
 };

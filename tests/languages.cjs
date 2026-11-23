@@ -24,10 +24,9 @@ let checks=0;function check(value,message){assert.ok(value,message);checks++;con
  check(await page.locator('#explorer').getAttribute('href')==='https://etherscan.io/address/0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3',`${width} ${lang} exact explorer link`);
  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${width} ${lang} no overflow`);
  if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('body').innerText()),`${width} ${lang} no untranslated Korean`);
- await page.locator('#history-body button').first().click();if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#detail-dialog').innerText()),`${width} ${lang} pending detail translated`);await page.locator('#close-dialog').click();
+ await page.locator('#history-body button').first().click();if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#detail-dialog').innerText()),`${width} ${lang} first completed detail translated`);await page.locator('#close-dialog').click();
  await page.locator('#history-body button').nth(1).click();if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#detail-dialog').innerText()),`${width} ${lang} complete detail translated`);await page.locator('#close-dialog').click();
  await page.locator('#alert-preview').click();if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#detail-dialog').innerText()),`${width} ${lang} alert translated`);await page.locator('#close-dialog').click();
- await page.locator('#twap').fill('0');if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#twap-error').innerText()),`${width} ${lang} validation translated`);await page.locator('#reset-sim').click();
  await page.locator('#edit-copy').click();if(lang!=='ko')check(!/[가-힣]/.test(await page.locator('#copy-dialog').innerText()),`${width} ${lang} editor translated`);
  const field=page.locator('#copy-field-hero-description');await field.fill('Edited '+lang);await page.locator('#copy-form button[type=submit]').click();await page.reload({waitUntil:'networkidle'});
  check(await page.locator('[data-copy=hero-description]').innerText()==='Edited '+lang,`${width} ${lang} edited copy persists`);

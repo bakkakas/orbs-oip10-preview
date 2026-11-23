@@ -1,4 +1,4 @@
-import {translations} from './translations.js?v=6';
+import {translations} from './translations.js?v=7';
 const allowed = ['ko', 'en', 'ja'];
 let selected = 'ko';
 try { const stored = localStorage.getItem('orbs-preview-language'); if (allowed.includes(stored)) selected = stored; } catch { /* Korean remains the default. */ }
