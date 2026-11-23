@@ -12,13 +12,21 @@ let checks=0;function check(value,message){assert.ok(value,message);checks++;con
  page.on('pageerror',e=>(errors.push(e.message),console.error(e.message)));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.text());});
  await page.goto(base,{waitUntil:'networkidle'});
  for(const lang of ['ko','en','ja']){
- if(await page.locator('#language').inputValue()!==lang){await page.locator('#language').selectOption(lang);await page.waitForURL('**lang='+lang);await page.waitForLoadState('networkidle');}
+ if(await page.locator('#language').inputValue()!==lang){await page.locator('#language').selectOption(lang);await page.waitForURL(url=>url.searchParams.get('lang')===lang);await page.waitForLoadState('networkidle');}
  check(await page.locator('html').getAttribute('lang')===lang,`${width} ${lang} document language`);
  check(await page.locator('.brand').innerText()==='ORBS\nToken Burn Tracker',`${width} ${lang} brand`);
  check(await page.locator('h1').innerText()==='ORBS Season 1 Tokenomics',`${width} ${lang} season title`);
  check(await page.locator('h1').evaluate(el=>el.scrollWidth<=el.clientWidth && el.getBoundingClientRect().height<parseFloat(getComputedStyle(el).lineHeight)*1.5),`${width} ${lang} title fits one line`);
  check(await page.locator('#contract-address').evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=19),`${width} ${lang} prominent address`);
  check(await page.locator('#percent').innerText()==='32.00%',`${width} ${lang} progress preserved`);
+ check(await page.locator('#market-price').innerText()==='$0.0060',`${width} ${lang} same four-decimal current price`);
+ check(await page.locator('#history-body tr').count()===6 && await page.locator('thead th').count()===4,`${width} ${lang} current completed history`);
+ check(await page.locator('#total-supply').innerText()==='9,837,587,007.04' && await page.locator('#completed-rounds').innerText()==='6 / 52',`${width} ${lang} latest summary cards`);
+ check(await page.locator('#alerts input,#alerts select,.temporary-label').count()===0,`${width} ${lang} redundant labels and controls removed`);
+ check(!/예시|sample|example|サンプル|例示/i.test(await page.locator('.card').allInnerTexts().then(v=>v.join(' '))),`${width} ${lang} no repeated sample wording in cards`);
+ check(await page.locator('#progress-fill').evaluate(el=>getComputedStyle(el,'::after').animationDuration)==='3.2s',`${width} ${lang} shimmer frequency increased 50%`);
+ check(await page.locator('#history-body tr').first().evaluate(row=>{const cells=[...row.cells];const range=document.createRange();range.selectNodeContents(cells[2].querySelector('strong'));const amount=range.getBoundingClientRect();return cells[3].querySelector('a').getBoundingClientRect().x-amount.right>=40;}),`${width} ${lang} amount and transaction separated by at least 40px`);
+
  check(await page.locator('.brand-mark').evaluate(el=>el.complete&&el.naturalWidth>0),`${width} ${lang} official ORBS asset loaded`);
  check(await page.locator('#explorer img').evaluate(el=>el.complete&&el.naturalWidth>0),`${width} ${lang} official Etherscan asset loaded`);
  check(await page.locator('#explorer').getAttribute('href')==='https://etherscan.io/address/0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3',`${width} ${lang} exact explorer link`);
@@ -37,7 +45,7 @@ let checks=0;function check(value,message){assert.ok(value,message);checks++;con
  // Language selection persists on the canonical URL, and one language cannot overwrite another's copy.
  await page.locator('#edit-copy').click();await page.locator('#copy-field-hero-description').fill('Japanese only');await page.locator('#copy-form button[type=submit]').click();
  await page.goto(base,{waitUntil:'networkidle'});check(await page.locator('html').getAttribute('lang')==='ja',`${width} language persists without query`);
- await page.locator('#language').selectOption('en');await page.waitForURL('**lang=en');await page.waitForLoadState('networkidle');check(!(await page.locator('[data-copy=hero-description]').innerText()).includes('Japanese only'),`${width} language copy isolation`);
+ await page.locator('#language').selectOption('en');await page.waitForURL(url=>url.searchParams.get('lang')==='en');await page.waitForLoadState('networkidle');check(!(await page.locator('[data-copy=hero-description]').innerText()).includes('Japanese only'),`${width} language copy isolation`);
  await context.close();
  }
  check(errors.length===0,'no console/page errors: '+errors.join('; '));console.log(JSON.stringify({checks,base,widths:[1440,390,320],languages:['ko','en','ja'],errors}));

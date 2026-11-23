@@ -13,3 +13,11 @@ jobs:
       - run: npm test
       - run: npm run check
       - run: git diff --check
+      - run: npm run build
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Check shared UI in all languages
+        run: |
+          python3 -m http.server 8898 --bind 127.0.0.1 --directory dist &
+          node tests/languages.cjs http://127.0.0.1:8898/
+          node tests/updates.cjs http://127.0.0.1:8898/

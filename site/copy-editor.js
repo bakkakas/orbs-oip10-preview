@@ -1,3 +1,4 @@
+import {copyOverrides,savedCopy} from './copy-storage.js?v=7';
 import {t,language} from './i18n.js?v=7';
 // Preview-only copy editing. No server writes or shared publishing.
 export function initCopyEditor() {
@@ -10,9 +11,8 @@ export function initCopyEditor() {
   const apply = () => nodes.forEach(el => {el.textContent = saved[el.dataset.copy];});
   try {
     const parsed = JSON.parse(localStorage.getItem(key));
-    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-      for (const name of Object.keys(defaults)) if (Object.hasOwn(parsed, name) && valid(parsed[name])) saved[name] = language === 'ko' ? parsed[name].split('\n').map(line => t(line)).join('\n') : parsed[name];
-    }
+    saved = {...defaults, ...copyOverrides(parsed,defaults,language)};
+    if (parsed) localStorage.setItem(key,JSON.stringify(savedCopy(saved,defaults)));
   } catch { /* A blocked store or invalid older data must not break the dashboard. */ }
   apply();
   const fields = new Map();
@@ -57,7 +57,7 @@ export function initCopyEditor() {
     event.preventDefault();
     const draft = readDraft();
     if (!draft) return;
-    try { localStorage.setItem(key, JSON.stringify(draft)); }
+    try { localStorage.setItem(key, JSON.stringify(savedCopy(draft,defaults))); }
     catch {
       $('copy-status').textContent = t('브라우저 저장소를 사용할 수 없어 저장하지 못했어. 문구 파일 받기로 내용을 보관할 수 있어.');
       return;

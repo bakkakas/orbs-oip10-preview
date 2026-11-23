@@ -8,19 +8,20 @@ Focused Korean community UI preview. **No live chain integration, real subscript
 - Six completed illustrative rounds and one pending example, with explicitly illustrative weekly dates starting 2026-11-13. No transaction hashes are fabricated.
 - Summary cards: initial 10 billion ORBS minus illustrative cumulative burns; latest completed reference price; completed rounds out of 52. The former simulator has been removed.
 - Compact completed-only weekly table with period filters, ordering and keyboard-accessible details. Pending rounds are never shown.
-- Telegram-only preference prototype below the history table, stored in browser localStorage; preview message only.
+- Telegram setup instructions and message preview below the history table; no channel selector, local preference or live subscription.
 - Proposal and Korean explainer links. All live-integration inputs marked pending.
 
 ## Local verification
 ```
 npm test
 npm run check
-python3 -m http.server 8899 --bind 127.0.0.1 --directory site
+npm run build
+python3 -m http.server 8899 --bind 127.0.0.1 --directory dist
 ```
 Optional browser QA: `node tests/browser.cjs http://127.0.0.1:8899/` with Playwright installed. `PLAYWRIGHT_MODULE` and `CHROMIUM_PATH` may point to an existing local installation. Exercises 1440, 390 and 320px viewports and writes ignored screenshots to `artifacts/`. Tests also run against the deployed HTTPS URL.
 
 ## Deployment
-GitHub Pages Actions deploys only `site/` on main, after model tests and JS syntax checks. Query-string asset versions are updated through HTML → app → model when assets change. No public API keys or application backend; the browser reads the public CoinGecko simple-price endpoint.
+GitHub Pages Actions builds `site/` into `dist/` on main after tests and syntax checks. A content-derived release hash automatically rewrites every versioned HTML/CSS/JS reference, including nested imports. The release manifest detects stale tabs on entry/resume; language links carry the same release ID. No per-language page builds exist. No public API keys or application backend; the browser reads the public CoinGecko simple-price endpoint.
 
 ## Weekly alerts: recommended production architecture (NOT implemented)
 1. A scheduled server worker reads indexed burn events or the confirmed chain's RPC (`eth_getLogs` only if EVM). Backfill from a configured start block with a bounded overlap; keep a durable cursor and back off on rate limits.
@@ -51,11 +52,23 @@ The contract display and Etherscan link temporarily use the user-supplied ORBS s
 - Quotes older than five minutes, invalid values, network/HTTP failures and stale resumed tabs are not displayed as current. Unavailable prices display a dash and a translated status. The public free endpoint may rate-limit; there is no fabricated fallback.
 - Spot price does not feed the 7-day reference price, burn history or 32% illustrative progress.
 - History has Date / Round, 7-day reference price (USD/ORBS), Amount burned (ORBS), and Transaction columns. Select a date for details; scroll the table horizontally on mobile.
-- Actual hashes are currently unknown. At the user's request all sample transaction cells temporarily link to the supplied ORBS staking address (an address page, not a transaction); each is labeled Temporary address. A supplied valid full transaction hash would instead render the exact transaction link.
+- Actual hashes are currently unknown. At the user's request all sample transaction cells temporarily link to the supplied ORBS staking address (an address page, not a transaction); the global preview notice and link tooltip identify this as a temporary address, without repetitive per-row labels. A supplied valid full transaction hash would instead render the exact transaction link.
 - `tests/history-price.cjs` checks live quotes and table layout at three widths, then separately mocks missing/negative change, stale/invalid/error responses and refresh failure. It tests a synthetic transaction hash only in an isolated browser; never deployed as data.
 
 ## Summary cards and completed-only view
 
-The total-supply card is a clearly labeled example: 10,000,000,000 minus 162,412,992.96 = 9,837,587,007.04 ORBS, not an on-chain totalSupply read. The reference-price card uses the highest completed round, not the live spot quote. Completion is 6 / 52. Completed-only filtering also applies to period filters and the row count.
+The global preview notice identifies all burn metrics as demo data: 10,000,000,000 minus 162,412,992.96 = 9,837,587,007.04 ORBS, not an on-chain totalSupply read. The reference-price card uses the highest completed round, not the live spot quote. Completion is 6 / 52. Completed-only filtering also applies to period filters and the row count.
 
-Telegram preferences now use `orbs-oip10-preview-telegram-v2`, so previously selected email or push channels cannot silently affect the one-option UI. The former simulator fields are absent from the copy editor.
+## Cross-language updates
+
+All three languages share the same model, renderers, live price request, table and card markup. Only labels differ. CI now builds the site and exercises the latest price, table, cards, links and controls across Korean, English and Japanese at desktop and mobile widths. Missing translations fail the language check rather than silently shipping a stale language-specific layout.
+
+Copy editor saves use version 2: only user overrides, not a full snapshot of default text. Historical shipped defaults migrate automatically in all languages; genuine custom text remains untouched. Reset removes the overrides so later releases can update defaults. User edits are still local to their language/browser, not automatic machine translations.
+
+The release checker preserves open editor drafts, ignores offline errors and bounds reload attempts. A content hash changes automatically on any source change, so maintainers do not need to manually bump individual import versions. An older pre-checker page may require one refresh to receive this mechanism.
+
+## Telegram activation
+
+The UI is not a working subscription endpoint yet. Operator setup: create a dedicated bot with @BotFather, store its token only in backend secrets, handle /start and /stop, persist opted-in chat IDs, and connect the verified burn-event worker/outbox described above. Publish a t.me bot link only once this is ready. Recipients open that link and press Start; a bot cannot initiate a private conversation before the user starts it. Authorized channel delivery instead requires adding the bot with appropriate posting rights.
+
+A static GitHub Pages frontend cannot securely hold a bot token or run a reliable background monitor. A server/worker and durable database are required, along with the finalized burn contract/chain/ABI/start block. Current staking links are not evidence of burn events. No bot or real alerts are created by this change.
