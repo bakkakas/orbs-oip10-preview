@@ -1,4 +1,4 @@
-import {t,language} from './i18n.js?v=4';
+import {t,language} from './i18n.js?v=5';
 // Preview-only copy editing. No server writes or shared publishing.
 export function initCopyEditor() {
   const $ = id => document.getElementById(id);
@@ -11,7 +11,7 @@ export function initCopyEditor() {
   try {
     const parsed = JSON.parse(localStorage.getItem(key));
     if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-      for (const name of Object.keys(defaults)) if (Object.hasOwn(parsed, name) && valid(parsed[name])) saved[name] = parsed[name];
+      for (const name of Object.keys(defaults)) if (Object.hasOwn(parsed, name) && valid(parsed[name])) saved[name] = language === 'ko' ? parsed[name].split('\n').map(line => t(line)).join('\n') : parsed[name];
     }
   } catch { /* A blocked store or invalid older data must not break the dashboard. */ }
   apply();

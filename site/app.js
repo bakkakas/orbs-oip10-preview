@@ -1,4 +1,4 @@
-import {t,tr as msg,initLanguage} from './i18n.js?v=4';
+import {t,tr as msg,initLanguage} from './i18n.js?v=5';
 import {TARGET,WEEKLY_USD,calculateBurn,records,cumulative,progressPercent,filterRecords,sanitizeChannels} from './model.js?v=3';
 initLanguage();
 const $ = id => document.getElementById(id);
@@ -61,5 +61,5 @@ $('alert-form').addEventListener('submit',e=>{e.preventDefault();try{localStorag
 $('clear-prefs').addEventListener('click',()=>{try{localStorage.removeItem(KEY);inputs.forEach(i=>i.checked=i.value==='telegram');$('prefs-status').textContent=t('저장된 선택을 지웠어. 기본 예시(Telegram)로 돌아왔어.');}catch{$('prefs-status').textContent=t('저장소에 접근할 수 없어 삭제 여부를 확인하지 못했어.');}});
 $('alert-preview').addEventListener('click',()=>{const body=openDialog(t('소각 알림 메시지 예시'));const names={telegram:'Telegram',email:t('이메일'),push:t('웹 푸시')};const selected=channels();addText('p',msg`선택한 채널: ${selected.length?selected.map(c=>names[c]).join(', '):t('없음')}`,body);addText('p',t('[체험용 예시 · 실제 발송 없음]'),body,'dialog-note');const r=records[5];addText('p',msg`예시 6주차 소각 완료: ${fmt(r.amount)} ORBS`,body);addText('p',msg`적용 TWAP: $${fmt(r.twap,6)} / ORBS · 기준 금액: $${fmt(WEEKLY_USD)}`,body);addText('p',msg`예시 누적: ${fmt(cumulative)} / ${fmt(TARGET,0)} ORBS (${fmt(progressPercent)}%)`,body);addText('p',t('실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.'),body);});
 
-import {initCopyEditor} from './copy-editor.js?v=4';
+import {initCopyEditor} from './copy-editor.js?v=5';
 initCopyEditor();
