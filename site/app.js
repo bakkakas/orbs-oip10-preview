@@ -6,7 +6,10 @@ $('percent').textContent=fmt(progressPercent)+'%';
 $('progress-fill').style.width=Math.min(100,progressPercent)+'%';
 $('progress').setAttribute('aria-valuenow',String(progressPercent));
 $('progress').setAttribute('aria-valuetext',`예시 ${fmt(progressPercent)}%, ${fmt(cumulative)} ORBS`);
-$('copy-contract').addEventListener('click',()=>{$('contract-message').textContent='아직 확정 주소가 없어 복사하지 않았어. 주소·체인 확정 후 복사와 탐색기 링크가 활성화돼.';});
+$('copy-contract').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText($('contract-address').textContent);$('contract-message').textContent='임시 ORBS 스테이킹 주소를 복사했어. 실제 소각 주소가 아니야.';}
+ catch{$('contract-message').textContent='자동 복사를 사용할 수 없어. 위 주소를 선택해서 복사해 줘.';}
+});
 function simulate(){
   const raw=$('twap').value.trim();
   const price=raw===''?NaN:Number(raw);
@@ -55,3 +58,6 @@ inputs.forEach(i=>i.addEventListener('change',()=>{$('prefs-status').textContent
 $('alert-form').addEventListener('submit',e=>{e.preventDefault();try{localStorage.setItem(KEY,JSON.stringify(channels()));$('prefs-status').textContent=channels().length?'체험용 선택을 이 브라우저에 저장했어. 실제 알림 구독·발송은 없어.':'수신 채널 없음으로 저장했어. 실제 구독은 없어.';}catch{$('prefs-status').textContent='브라우저 저장소를 사용할 수 없어 저장하지 못했어. 이 화면에서만 체험할 수 있어.';}});
 $('clear-prefs').addEventListener('click',()=>{try{localStorage.removeItem(KEY);inputs.forEach(i=>i.checked=i.value==='telegram');$('prefs-status').textContent='저장된 선택을 지웠어. 기본 예시(Telegram)로 돌아왔어.';}catch{$('prefs-status').textContent='저장소에 접근할 수 없어 삭제 여부를 확인하지 못했어.';}});
 $('alert-preview').addEventListener('click',()=>{const body=openDialog('소각 알림 메시지 예시');const names={telegram:'Telegram',email:'이메일',push:'웹 푸시'};const selected=channels();addText('p',`선택한 채널: ${selected.length?selected.map(c=>names[c]).join(', '):'없음'}`,body);addText('p','[체험용 예시 · 실제 발송 없음]',body,'dialog-note');const r=records[5];addText('p',`예시 6주차 소각 완료: ${fmt(r.amount)} ORBS`,body);addText('p',`적용 TWAP: $${fmt(r.twap,6)} / ORBS · 기준 금액: $${fmt(WEEKLY_USD)}`,body);addText('p',`예시 누적: ${fmt(cumulative)} / ${fmt(TARGET,0)} ORBS (${fmt(progressPercent)}%)`,body);addText('p','실제 서비스에서는 확정 거래 링크·소각 시각·가격 구간을 함께 제공해. 지금은 거래가 없어 링크를 만들지 않았어.',body);});
+
+import {initCopyEditor} from './copy-editor.js?v=2';
+initCopyEditor();

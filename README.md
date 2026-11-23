@@ -38,3 +38,9 @@ GitHub Pages Actions deploys only `site/` on main, after model tests and JS synt
 - Preferred initial channel, recipient opt-in/linking flow, backend hosting/DB and chosen messaging provider credentials stored server-side (never in the public site).
 
 No live data or alert delivery is claimed. Preferences saved in this prototype are not production consent/subscriptions.
+
+## Preview copy editor (2026-11-23)
+
+Use **문구 편집** to change titles and descriptions, then **저장하고 적용**. Plain text is stored only in the current browser (localStorage); this does not publish changes to other visitors/devices. Cancel/Escape discards unsaved edits. **기본 문구로 채우기** restores draft defaults; save to apply. **문구 파일 받기** exports the current draft as JSON for handoff. Financial values and preview/temporary warnings remain outside the editor.
+
+The contract display and Etherscan link temporarily use the user-supplied ORBS staking contract `0x01D59Af68E2dcb44e04C50e05F62E7043F2656C3`. It is explicitly NOT the burn contract and no on-chain reads are made. The filled progress bar has a subtle shimmer, disabled by prefers-reduced-motion.

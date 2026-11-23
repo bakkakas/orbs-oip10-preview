@@ -1,1 +1,10 @@
-{"name":"orbs-oip10-preview","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test tests/model.test.js","check":"node --check site/app.js && node --check site/model.js"}}
+{
+  "name": "orbs-oip10-preview",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/model.test.js",
+    "check": "node --check site/app.js && node --check site/model.js && node --check site/copy-editor.js"
+  }
+}
